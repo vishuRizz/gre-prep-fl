@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
               <div className="flex items-center">
                 <span className="text-white font-bold text-xl">Gre</span>
                 <span className="text-white font-normal text-xl">TestPrep</span>
-                <span className="ml-2 bg-emerald-500 text-white text-xs px-2 py-1 rounded font-bold">GRE</span>
+                <span className="ml-2 bg-[#7AC86B] text-white text-xs px-2 py-1 rounded font-bold">GRE</span>
               </div>
             </div>
             <div className="text-white text-xs mt-0.5 ml-10">
@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
           {/* Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
            <Button  variant="outline">Login</Button>
-            <Button className="bg-[#2f835d] text-white px-6 py-2.5 text-sm rounded hover:bg-emerald-600 transition-colors">
+            <Button className="bg-[#7AC86B] text-white px-6 py-2.5 text-sm rounded hover:bg-emerald-600 transition-colors">
               TRY FOR FREE
             </Button>
           </div>

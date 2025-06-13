@@ -28,7 +28,7 @@ const HeroSection: React.FC = () => {
 
       {/* Content */}
       <div className="relative h-[350px] z-20 text-center max-w-4xl mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl  text-white mb-4 leading-tight">
+        <h1 className=" font-playfair text-4xl md:text-5xl  text-white mb-4 leading-tight">
           TOP-RATED GRE TEST PREP
         </h1>
 
@@ -45,7 +45,7 @@ const HeroSection: React.FC = () => {
               </svg>
             ))}
           </div>
-          <p className="text-white text-xl mt-5 md:text-2xl">
+          <p className="font-playfair text-white text-xl mt-5 md:text-2xl">
             Earn your best score in Quant and Verbal
           </p>
           <div className="flex text-green-400 ml-4">
@@ -62,11 +62,11 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        <p className="text-white text-xl md:text-2xl mb-10  ">
+        <p className="font-playfair text-white text-xl md:text-2xl mb-10  ">
           with TTP's GRE prep course
         </p>
 
-        <Button className="bg-[#2f835d] text-white font-semibold py-4 px-12 text-lg  ">
+        <Button className="font-playfair bg-[#7AC86B] text-white font-semibold py-4 px-12 text-lg  ">
           FULL-ACCESS TRIAL FOR FREE
         </Button>
 
@@ -77,9 +77,9 @@ const HeroSection: React.FC = () => {
             <div className="h-px bg-white mb-4 mt-4 w-full" />
 
             {/* Text */}
-            <p className="text-md md:text-2xl font-bold ">
+            <p className=" font-playfair text-md md:text-2xl font-bold ">
               SCORE <span className="text-md">320</span> OR HIGHER ON THE GRE.{" "}
-              <span className="text-white">GUARANTEED.</span>
+              <span className="text-white font-playfair">GUARANTEED.</span>
             </p>
           </div>
         </div>

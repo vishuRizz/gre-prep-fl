@@ -124,3 +124,10 @@ body {
     @apply bg-background text-foreground;
   }
 }
+.card-curve {
+  clip-path: path('M 0 0 L 100 0 L 100 15 Q 100 0 95 0 L 20 0 Q 15 0 15 5 L 15 100 L 0 100 Z');
+}
+
+.font-playfair {
+  font-family: var(--font-playfair), serif;
+}

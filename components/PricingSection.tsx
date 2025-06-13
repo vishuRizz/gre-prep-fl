@@ -9,7 +9,7 @@ const PricingSection: React.FC = () => {
   return (
     <div className="py-16 px-4 ">
       <div className="max-w-7xl mx-auto">
-        <h2 className="text-4xl font-bold text-center text-gray-700 mb-12">
+        <h2 className=" font-playfair text-4xl font-bold text-center text-gray-700 mb-12">
           GRE Prep for Your Best Score
         </h2>
         
@@ -59,7 +59,7 @@ const PricingSection: React.FC = () => {
                   </p>
                 </div>
                 
-                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#2f835d] hover:text-white font-semibold py-3 rounded-full">
+                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#7AC86B] hover:text-white font-semibold py-3 rounded-full">
                   Learn More
                 </Button>
               </CardContent>
@@ -103,7 +103,7 @@ const PricingSection: React.FC = () => {
                   </p>
                 </div>
                 
-                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#2f835d]  hover:text-white font-semibold py-3 rounded-full">
+                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#7AC86B]  hover:text-white font-semibold py-3 rounded-full">
                   Learn More
                 </Button>
               </CardContent>
@@ -144,7 +144,7 @@ const PricingSection: React.FC = () => {
                   </p>
                 </div>
                 
-                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#2f835d]  hover:text-white font-semibold py-3 rounded-full">
+                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#7AC86B]  hover:text-white font-semibold py-3 rounded-full">
                   Learn More
                 </Button>
               </CardContent>
@@ -185,7 +185,7 @@ const PricingSection: React.FC = () => {
                   </p>
                 </div>
                 
-                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#2f835d] hover:text-white font-semibold py-3 rounded-full">
+                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#7AC86B] hover:text-white font-semibold py-3 rounded-full">
                   Learn More
                 </Button>
               </CardContent>
@@ -226,7 +226,7 @@ const PricingSection: React.FC = () => {
                   </p>
                 </div>
                 
-                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#2f835d] hover:text-white font-semibold py-3 rounded-full">
+                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#7AC86B] hover:text-white font-semibold py-3 rounded-full">
                   Learn More
                 </Button>
               </CardContent>

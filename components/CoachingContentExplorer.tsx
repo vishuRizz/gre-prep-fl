@@ -40,13 +40,13 @@ const CoachingContentExplorer: React.FC = () => {
       {/* Header Section */}
       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8">
         <div className="max-w-2xl">
-          <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
+          <h1 className="font-playfair text-4xl lg:text-5xl font-bold text-slate-900 mb-4 leading-tight">
             Explore the Coaching{' '}
-            <span className="text-[#2f835d]">
+            <span className="text-[#7AC86B]">
               Content You Need
             </span>
           </h1>
-          <p className="text-lg text-slate-600 leading-relaxed">
+          <p className=" text-lg text-slate-600 leading-relaxed">
             Maximize your impact with actionable tips, the latest coaching trends, 
             thought leadership insights, and much more.
           </p>
@@ -54,7 +54,7 @@ const CoachingContentExplorer: React.FC = () => {
         
         <Button 
           size="lg"
-          className="bg-[#2f835d] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+          className="bg-[#7AC86B] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
         >
           Explore Our Resource Library
         </Button>
@@ -84,7 +84,7 @@ const CoachingContentExplorer: React.FC = () => {
 
             {/* Content */}
             <div className="p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#2f835d] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#7AC86B] transition-colors duration-300">
                 {card.title}
               </h3>
               <p className="text-slate-600 leading-relaxed mb-6 text-sm">
@@ -92,7 +92,7 @@ const CoachingContentExplorer: React.FC = () => {
               </p>
               
               {/* Arrow Button */}
-              <button className="group/arrow inline-flex items-center justify-center w-12 h-12 bg-slate-100 hover:bg-[#2f835d] rounded-full transition-all duration-300 hover:shadow-lg">
+              <button className="group/arrow inline-flex items-center justify-center w-12 h-12 bg-slate-100 hover:bg-[#7AC86B] rounded-full transition-all duration-300 hover:shadow-lg">
                 <ArrowRight 
                   className="w-5 h-5 text-slate-600 group-hover/arrow:text-white transition-colors duration-300 group-hover/arrow:translate-x-1" 
                 />
