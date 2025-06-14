@@ -1,3 +1,4 @@
+"use client"
 import React from 'react';
 import Navbar from '../components/Navbar';
 import PricingSection from '../components/PricingSection';
@@ -9,11 +10,13 @@ import Footer from '../components/Footer';
 import HeroSection from '@/components/HeroSection';
 import BusinessSchoolsCarousel from '@/components/BusinessSchoolsCarousel';
 import GREPricingTable from '@/components/ComparisionTable';
+import CoachingPlatformPage from '@/components/CoachingPlatformPage';
 export default function Home() {
   return (
     <div className="min-h-screen">
     <Navbar />
    <HeroSection/>
+   <CoachingPlatformPage/>
     <PricingSection/>
     <GREStats/>
     <TeamComponent/>
