@@ -1,10 +1,27 @@
-// components/Navbar.tsx
-import React from 'react';
+"use client"
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
 
 const Navbar: React.FC = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const viewportHeight = window.innerHeight -100;
+      setIsScrolled(scrollPosition > viewportHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-gray-700 backdrop-blur-md border-b border-gray-800' 
+        : 'bg-transparent'
+    }`}>
       <div className="max-w-[1400px] mx-auto px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -19,52 +36,103 @@ const Navbar: React.FC = () => {
                 </svg>
               </div>
               <div className="flex items-center">
-                <span className="text-white font-bold text-xl">Gre</span>
-                <span className="text-white font-normal text-xl">TestPrep</span>
+                <span className={`font-bold text-xl transition-colors ${
+                  isScrolled ? 'text-white' : 'text-white'
+                }`}>Gre</span>
+                <span className={`font-normal text-xl transition-colors ${
+                  isScrolled ? 'text-white' : 'text-white'
+                }`}>TestPrep</span>
                 <span className="ml-2 bg-[#7AC86B] text-white text-xs px-2 py-1 rounded font-bold">GRE</span>
               </div>
             </div>
-            <div className="text-white text-xs mt-0.5 ml-10">
+            <div className={`text-xs mt-0.5 ml-10 transition-colors ${
+              isScrolled ? 'text-gray-300' : 'text-white'
+            }`}>
               Prepare with the best. Rock the test.™
             </div>
           </div>
 
           {/* Navigation Links */}
           <div className="hidden xl:flex items-center space-x-10">
-            <a href="#" className="text-white hover:text-emerald-400 text-base font-small transition-colors">
-              Pricing
+            <a href="#" className={`text-base font-medium transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
+               Tests
             </a>
-            <a href="#" className="text-white hover:text-emerald-400 text-base font-small transition-colors">
-              Reviews
+            <a href="#" className={`text-base font-medium transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
+               Plans
             </a>
-            <a href="#" className="text-white hover:text-emerald-400 text-base font-small transition-colors">
-              Guarantee
+            <a href="#" className={`text-base font-medium transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
+              courses
             </a>
-            <a href="#" className="text-white hover:text-emerald-400 text-base font-small transition-colors">
-              MBA Admissions
+            <a href="#" className={`text-base font-medium transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
+              Testimonials
             </a>
-            <a href="#" className="text-white hover:text-emerald-400 text-base font-small transition-colors">
-              Live Classes
+            <a href="#" className={`text-base font-medium transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
+              Analytics
             </a>
-            <a href="#" className="text-white hover:text-emerald-400 text-base font-small transition-colors">
-              Tutoring
+            <a href="#" className={`text-base font-medium transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
+              pricing
             </a>
-            <a href="#" className="text-white hover:text-emerald-400 text-base font-small transition-colors">
-              Blog
+            <a href="#" className={`text-base font-medium transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
+              Resources
             </a>
           </div>
 
           {/* Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-           <Button  variant="outline">Login</Button>
-            <Button className="bg-[#7AC86B] text-white px-6 py-2.5 text-sm rounded hover:bg-emerald-600 transition-colors">
+            <Button 
+              variant="outline" 
+              className={`transition-all duration-300 ${
+                isScrolled 
+                  ? 'border-gray-600 text-black hover:bg-gray-800 hover:text-white' 
+                  : 'border-white/30 text-black hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              Sign Up
+            </Button>
+            <Button className={`px-6 py-2.5 text-sm rounded font-semibold transition-all duration-300 ${
+              isScrolled 
+                ? 'bg-[#7AC86B] text-white hover:bg-emerald-600 shadow-lg' 
+                : 'bg-[#7AC86B] text-white hover:bg-emerald-600'
+            }`}>
               TRY FOR FREE
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <div className="xl:hidden">
-            <button className="text-white hover:text-emerald-400 p-2">
+            <button className={`p-2 transition-colors ${
+              isScrolled 
+                ? 'text-gray-200 hover:text-emerald-400' 
+                : 'text-white hover:text-emerald-400'
+            }`}>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
@@ -77,5 +145,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-//#2f835d

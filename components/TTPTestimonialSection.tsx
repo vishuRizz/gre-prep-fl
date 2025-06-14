@@ -68,7 +68,7 @@ const TTPTestimonialSection: React.FC = () => {
         {/* Header */}
         <div className="mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-light text-gray-900 mb-4">
-            See how TTP helps students{' '}
+            See how we helps students{' '}
             <span className="font-playfair text-green-600 font-medium">maximize</span> their{' '}
             <span className="font-playfair font-medium">GRE scores</span>
           </h2>
@@ -130,7 +130,7 @@ const TTPTestimonialSection: React.FC = () => {
               <div className="flex items-center space-x-2 mb-4">
                 <div className="flex items-center space-x-1">
                   <div className="text-blue-500 text-2xl font-bold transform rotate-12">≫</div>
-                  <div className="text-blue-500 text-xl font-bold">TTP</div>
+                  <div className="text-blue-500 text-xl font-bold">Gre Prep</div>
                   <sup className="text-blue-400 text-xs">™</sup>
                 </div>
                 <span className="text-gray-600 font-medium">Students</span>
