@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, Lock, Mail, User, Shield } from 'lucide-react';
 import { useAuth } from '@/components/AuthContext';
-
+import { toast } from 'sonner';
 interface FormData {
   username: string;
   email: string;
@@ -65,9 +65,13 @@ const AuthPage: React.FC = () => {
       const data = mode === 'login' ? await res.json() : await res.text();
       
       if (mode === 'login' && formData.isAdmin && !data.adminDto) {
-        setMessage('Not an admin account.');
+        toast.error('Not an admin account.');
       } else {
-        setMessage(mode === 'login' ? 'Login successful!' : 'Signup successful! Please login.');
+        if (mode === 'login') {
+          toast.success('Login successful!');
+        } else {
+          toast.success('Signup successful! Verify email and Please login.');
+        }
         if (mode === 'login') {
           if (data.token) {
             login(data.token, formData.isAdmin && data.adminDto ? data.adminDto : undefined);
@@ -77,7 +81,7 @@ const AuthPage: React.FC = () => {
         if (mode === 'signup') setMode('login');
       }
     } catch (err: any) {
-      setMessage(err.message);
+      toast.error(err.message);
     } finally {
       setIsLoading(false);
     }

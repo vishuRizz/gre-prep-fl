@@ -1,5 +1,6 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { toast } from 'sonner';
 
 interface AuthContextType {
   isLoggedIn: boolean;
@@ -38,6 +39,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     localStorage.removeItem('admin');
     setIsLoggedIn(false);
     setIsAdmin(false);
+    toast.success('Logged out successfully', { className: 'text-lg py-4 px-6' });
   };
 
   return (

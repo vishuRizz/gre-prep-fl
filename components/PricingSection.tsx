@@ -151,87 +151,10 @@ const PricingSection: React.FC = () => {
             </Card>
           </div>
 
-          {/* Self-Paced Card */}
-          <div className="w-full max-w-sm md:col-start-1 lg:col-start-2 lg:col-span-2">
-            <Card className="rounded-3xl shadow-lg hover:shadow-xl transition-shadow border-2 border-gray-200 h-full">
-              <CardHeader className="text-center pb-2">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                  <span className="text-orange-600 text-sm font-medium">Self-Led</span>
-                </div>
-                <CardTitle className="text-3xl font-bold text-gray-900 mb-2">Self-Paced</CardTitle>
-                <CardDescription className="text-gray-600 text-center px-4">
-                  Flexible prep designed to boost your score
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="px-8 pb-8 flex-1 flex flex-col">
-                <div className="border-t border-gray-200 pt-6 mb-6 flex-1">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-left">On-the-go access to drills and video-based lessons</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="text-center mb-6">
-                  <div className="flex items-baseline justify-center gap-2 mb-2">
-                    <span className="text-gray-400 line-through text-lg">$499</span>
-                    <span className="text-3xl font-bold text-gray-900">$399</span>
-                  </div>
-                  <p className="text-sm text-gray-600">
-                    4 interest-free payments or as low as $34/mo <span className="underline">with Affirm</span>
-                  </p>
-                </div>
-                
-                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#7AC86B] hover:text-white font-semibold py-3 rounded-full">
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
 
-          {/* Fundamentals Card */}
-          <div className="w-full max-w-sm md:col-start-2 lg:col-start-4 lg:col-span-2">
-            <Card className="rounded-3xl shadow-lg hover:shadow-xl transition-shadow border-2 border-gray-200 h-full">
-              <CardHeader className="text-center pb-2">
-                <div className="flex items-center justify-center gap-2 mb-4">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full"></div>
-                  <span className="text-emerald-600 text-sm font-medium">LiveOnline</span>
-                </div>
-                <CardTitle className="text-3xl font-bold text-gray-900 mb-2">Fundamentals</CardTitle>
-                <CardDescription className="text-gray-600 text-center px-4">
-                  Focused prep with essential strategies and content to boost your score
-                </CardDescription>
-              </CardHeader>
-              
-              <CardContent className="px-8 pb-8 flex-1 flex flex-col">
-                <div className="border-t border-gray-200 pt-6 mb-6 flex-1">
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <CheckCircle className="w-5 h-5 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-left">24 hours of expert-led live instruction</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="text-center mb-6">
-                  <div className="flex items-baseline justify-center gap-2 mb-2">
-                    <span className="text-gray-400 line-through text-lg">$1,199</span>
-                    <span className="text-3xl font-bold text-gray-900">$1,099</span>
-                  </div>
-                  <p className="text-sm text-gray-600">
-                    As low as $62/mo or 0% APR <span className="underline">with Affirm</span>
-                  </p>
-                </div>
-                
-                <Button className="w-full bg-white text-emerald-600 border-2 border-emerald-600 hover:bg-[#7AC86B] hover:text-white font-semibold py-3 rounded-full">
-                  Learn More
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
+       
+
+        
         </div>
       </div>
     </div>

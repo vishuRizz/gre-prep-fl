@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from '@/components/AuthContext';
+import { toast } from 'sonner';
 
 export default function AdminLoginPage() {
   const [formData, setFormData] = useState({ username: "", password: "" });
@@ -34,15 +35,15 @@ export default function AdminLoginPage() {
 
       if (data.adminDto) {
         login(data.token, data.adminDto);
-        alert("Login successful!");
+        toast.success("Login successful!");
         router.push("/");
       } else {
-        setError("Not an admin account.");
+        toast.error("Not an admin account.");
       }
 
     } catch (err: any) {
       console.error(err);
-      setError(err.message);
+      toast.error(err.message);
     }
   };
 
