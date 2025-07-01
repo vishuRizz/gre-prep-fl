@@ -1,9 +1,13 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation";
+import { useAuth } from '@/components/AuthContext';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { isLoggedIn, isAdmin, logout } = useAuth();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,13 +20,18 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
+
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isScrolled 
         ? 'bg-gray-700 backdrop-blur-md border-b border-gray-800' 
         : 'bg-transparent'
     }`}>
-      <div className="max-w-[1400px] mx-auto px-8">
+      <div className="max-w-[1450px] mx-auto px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex flex-col">
@@ -68,13 +77,22 @@ const Navbar: React.FC = () => {
             }`}>
                Plans
             </a>
-            <a href="#" className={`text-base font-medium transition-colors ${
+            <a href="/courses" className={`text-base font-medium transition-colors ${
               isScrolled 
                 ? 'text-gray-200 hover:text-emerald-400' 
                 : 'text-white hover:text-emerald-400'
             }`}>
               courses
             </a>
+            {isAdmin && (
+              <a href="/admin/users" className={`text-base font-medium transition-colors ${
+                isScrolled 
+                  ? 'text-gray-200 hover:text-emerald-400' 
+                  : 'text-white hover:text-emerald-400'
+              }`}>
+                Users
+              </a>
+            )}
             <a href="#" className={`text-base font-medium transition-colors ${
               isScrolled 
                 ? 'text-gray-200 hover:text-emerald-400' 
@@ -114,8 +132,9 @@ const Navbar: React.FC = () => {
                   ? 'border-gray-600 text-black hover:bg-gray-800 hover:text-white' 
                   : 'border-white/30 text-black hover:bg-white/10 hover:text-white'
               }`}
+              asChild
             >
-              Sign Up
+              <a href="/user/auth">Login</a>
             </Button>
             <Button className={`px-6 py-2.5 text-sm rounded font-semibold transition-all duration-300 ${
               isScrolled 
@@ -124,6 +143,14 @@ const Navbar: React.FC = () => {
             }`}>
               TRY FOR FREE
             </Button>
+            {isLoggedIn && (
+              <button
+                onClick={() => { logout(); router.push("/"); }}
+                className="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded transition-colors"
+              >
+                Logout
+              </button>
+            )}
           </div>
 
           {/* Mobile menu button */}

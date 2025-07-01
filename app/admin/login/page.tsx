@@ -1,0 +1,76 @@
+'use client';
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useAuth } from '@/components/AuthContext';
+
+export default function AdminLoginPage() {
+  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [error, setError] = useState("");
+  const { login } = useAuth();
+  const router = useRouter();
+
+  const handleChange = (e: any) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const res = await fetch("http://localhost:8080/api/user/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(errorText || "Login failed");
+      }
+
+      const data = await res.json();
+
+      if (data.adminDto) {
+        login(data.token, data.adminDto);
+        alert("Login successful!");
+        router.push("/");
+      } else {
+        setError("Not an admin account.");
+      }
+
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message);
+    }
+  };
+
+  return (
+    <div style={{ maxWidth: 400, margin: "auto", paddingTop: 50 }}>
+      <h2>Admin Login</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={formData.username}
+          onChange={handleChange}
+          required
+          style={{ display: "block", marginBottom: 10, width: "100%" }}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+          style={{ display: "block", marginBottom: 10, width: "100%" }}
+        />
+        <button type="submit">Login</button>
+        {error && <p style={{ color: "red", marginTop: 10 }}>{error}</p>}
+      </form>
+    </div>
+  );
+}
