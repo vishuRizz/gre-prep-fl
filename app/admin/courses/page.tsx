@@ -19,10 +19,27 @@ const CoursesPage = () => {
     const fetchCourses = async () => {
       try {
         const res = await fetch('http://localhost:8080/public/getAllCourses');
-        const data = await res.json();
-        setCourses(data);
+        console.log('Response status:', res.status);
+        
+        if (res.status === 204) {
+          // No content - empty course list
+          setCourses([]);
+        } else if (res.ok) {
+          const data = await res.json();
+          console.log('Fetched data:', data);
+          // Handle cases where courseSubjects might be null or undefined
+          const processedData = data.map((course: any) => ({
+            ...course,
+            courseSubjects: course.courseSubjects || []
+          }));
+          setCourses(processedData);
+        } else {
+          console.error('Failed to fetch courses, status:', res.status);
+          setCourses([]);
+        }
       } catch (error) {
         console.error("Failed to fetch courses:", error);
+        setCourses([]);
       } finally {
         setLoading(false);
       }
@@ -43,7 +60,7 @@ const CoursesPage = () => {
           <div key={index} style={{ marginBottom: '1.5rem', border: '1px solid #ccc', borderRadius: '8px', padding: '1rem' }}>
             <h2>{course.courseName}</h2>
             <p>{course.courseDescription}</p>
-            <p><strong>Subjects:</strong> {course.courseSubjects.join(', ')}</p>
+            <p><strong>Subjects:</strong> {course.courseSubjects?.length > 0 ? course.courseSubjects.join(', ') : 'No subjects specified'}</p>
             <p><strong>Duration:</strong> {course.courseDuration} hours</p>
             <p><strong>Price:</strong> ₹{course.price}</p>
             <p><strong>Created At:</strong> {new Date(course.createdAt).toLocaleString()}</p>
