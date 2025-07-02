@@ -8,6 +8,10 @@ export default function AdminResetPasswordPage() {
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  if (!token) {
+    return <div className="text-center mt-10 text-red-600">Invalid or missing reset token. Please use the link from your email.</div>;
+  }
+
   const handleReset = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage('');

@@ -63,13 +63,7 @@ const Navbar: React.FC = () => {
 
           {/* Navigation Links */}
           <div className="hidden xl:flex items-center space-x-10">
-            <a href="#" className={`text-base font-medium transition-colors ${
-              isScrolled 
-                ? 'text-gray-200 hover:text-emerald-400' 
-                : 'text-white hover:text-emerald-400'
-            }`}>
-               Tests
-            </a>
+           
             <a href="#" className={`text-base font-medium transition-colors ${
               isScrolled 
                 ? 'text-gray-200 hover:text-emerald-400' 
@@ -93,20 +87,14 @@ const Navbar: React.FC = () => {
                 Users
               </a>
             )}
-            <a href="#" className={`text-base font-medium transition-colors ${
+            <a href="testimonial" className={`text-base font-medium transition-colors ${
               isScrolled 
                 ? 'text-gray-200 hover:text-emerald-400' 
                 : 'text-white hover:text-emerald-400'
             }`}>
               Testimonials
             </a>
-            <a href="#" className={`text-base font-medium transition-colors ${
-              isScrolled 
-                ? 'text-gray-200 hover:text-emerald-400' 
-                : 'text-white hover:text-emerald-400'
-            }`}>
-              Analytics
-            </a>
+           
             <a href="#" className={`text-base font-medium transition-colors ${
               isScrolled 
                 ? 'text-gray-200 hover:text-emerald-400' 
@@ -114,13 +102,7 @@ const Navbar: React.FC = () => {
             }`}>
               pricing
             </a>
-            <a href="#" className={`text-base font-medium transition-colors ${
-              isScrolled 
-                ? 'text-gray-200 hover:text-emerald-400' 
-                : 'text-white hover:text-emerald-400'
-            }`}>
-              Resources
-            </a>
+            
           </div>
 
           {/* Auth Buttons */}
@@ -136,13 +118,18 @@ const Navbar: React.FC = () => {
             >
               <a href="/user/auth">Login</a>
             </Button>
-            <Button className={`px-6 py-2.5 text-sm rounded font-semibold transition-all duration-300 ${
+            <Button 
+              variant="outline" 
+              className={`px-6 py-2.5 text-sm rounded font-semibold transition-all duration-300 ${
               isScrolled 
                 ? 'bg-[#7AC86B] text-white hover:bg-emerald-600 shadow-lg' 
                 : 'bg-[#7AC86B] text-white hover:bg-emerald-600'
-            }`}>
-              TRY FOR FREE
+            }`}
+              asChild
+            >
+              <a href="/contact">Enquire Now</a>
             </Button>
+           
             {isLoggedIn && (
               <button
                 onClick={() => { logout(); router.push("/"); }}

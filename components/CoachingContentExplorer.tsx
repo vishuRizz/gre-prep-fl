@@ -52,12 +52,7 @@ const CoachingContentExplorer: React.FC = () => {
           </p>
         </div>
         
-        <Button 
-          size="lg"
-          className="bg-[#7AC86B] text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-        >
-          Explore Our Resource Library
-        </Button>
+       
       </div>
 
       {/* Content Cards Grid */}
@@ -91,20 +86,13 @@ const CoachingContentExplorer: React.FC = () => {
                 {card.description}
               </p>
               
-              {/* Arrow Button */}
-              <button className="group/arrow inline-flex items-center justify-center w-12 h-12 bg-slate-100 hover:bg-[#7AC86B] rounded-full transition-all duration-300 hover:shadow-lg">
-                <ArrowRight 
-                  className="w-5 h-5 text-slate-600 group-hover/arrow:text-white transition-colors duration-300 group-hover/arrow:translate-x-1" 
-                />
-              </button>
+            
             </div>
           </div>
         ))}
       </div>
 
-      {/* Floating Elements for Visual Interest */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200/30 rounded-full blur-xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-purple-200/20 rounded-full blur-2xl animate-pulse delay-1000" />
+     
     </div>
   );
 };
