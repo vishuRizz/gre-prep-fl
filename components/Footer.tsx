@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronRight, MapPin, Mail, Phone } from 'lucide-react';
-
+import Link  from  'next/link';
 const Footer: React.FC = () => {
   return (
     <div className="bg-gray-50">
@@ -46,13 +46,17 @@ const Footer: React.FC = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link href="/contact">
             <button className="bg-[#7AC86B] hover:bg-green-600 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
-              Start Free Trial
+             Contact Us
               <ChevronRight className="w-4 h-4" />
             </button>
+            </Link>
+            <Link href="/courses">
             <button className="bg-white hover:bg-gray-50 text-gray-700 px-8 py-3 rounded-lg font-medium border border-gray-200 transition-colors">
               Learn More
             </button>
+            </Link>
           </div>
         </div>
       </div>

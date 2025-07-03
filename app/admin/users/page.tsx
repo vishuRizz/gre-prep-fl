@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { toast } from 'sonner';
 import { Users, Trash2, Mail, Phone, ShoppingCart, Receipt, Search, Filter, AlertCircle, Loader2 } from 'lucide-react';
-
+import Navbar from "@/components/Navbar";
 type UserResponseDto = {
   id: string;
   username: string;
@@ -106,7 +106,8 @@ export default function AdminUsersPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <Navbar/>
+      <div className="bg-white shadow-sm border-b mt-18">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
