@@ -36,7 +36,7 @@ export default function AdminLoginPage() {
       if (data.adminDto) {
         login(data.token, data.adminDto);
         toast.success("Login successful!");
-        router.push("/");
+        router.push("/admin/users");
       } else {
         toast.error("Not an admin account.");
       }

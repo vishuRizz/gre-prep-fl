@@ -139,7 +139,7 @@ const CoursesPage: React.FC = () => {
       <Navbar />
 
   {/* Hero Section */}
-  <div className="bg-gradient-to-r mt-12 from-green-400 via-green-200 to-green-900 text-white relative overflow-hidden">
+  <div className="bg-gradient-to-r mt-18 from-green-400 via-green-200 to-green-900 text-white relative overflow-hidden">
         {/* Background Image */}
         <img 
           src="/background.jpg" 

@@ -232,13 +232,13 @@ const CourseDetailsPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen ml-18 ">
+    <div className="min-h-screen ml-14  mr-14">
       <Navbar />
       <DismissibleBanner />
       {/* Header Navigation */}
 
       {/* Main Content */}
-      <div className="w-full mx-auto  px-4 sm:px-6 lg:px-8  ">
+      <div className="w-full mx-auto sm:mt-12 lg:mt-0 px-4 sm:px-6 lg:px-8  ">
         <div className="flex flex-col">
           {/* Course Title Section */}
 
@@ -246,64 +246,61 @@ const CourseDetailsPage: React.FC = () => {
             {/* Full-width Course Header */}
 
             <div className="flex  flex-col lg:flex-row w-full  rounded-lg border-gray-200 p-8 mb-6">
-  {/* LEFT SIDE – Course Info with background image */}
-  <div className="pt-20 w-[950px]" >
-    <h1 className="text-4xl lg:text-7xl font-bold text-gray-600 mb-4">
-      {course.courseName}
-    </h1>
-    <p className="text-lg max-w-full lg:max-w-3/4 text-gray-600 mb-6 leading-relaxed">
-      {course.courseDescription}
-    </p>
+              {/* LEFT SIDE – Course Info with background image */}
+              <div className="pt-20 w-[950px]">
+                <h1 className="text-4xl lg:text-7xl font-bold text-gray-600 mb-4">
+                  {course.courseName}
+                </h1>
+                <p className="text-lg max-w-full lg:max-w-3/4 text-gray-600 mb-6 leading-relaxed">
+                  {course.courseDescription}
+                </p>
 
-    {/* Instructor */}
-    <div className="flex items-center mb-6">
-      <div className="w-12 h-12 bg-[#7AC86B] rounded-full flex items-center justify-center text-white font-semibold mr-4">
-        <User className="w-8 h-8" />
-      </div>
-      <div>
-        <p className="text-md text-gray-600">Instructor:</p>
-        <p className="font-semibold text-lg text-gray-700">
-          GRE Prep Expert
-        </p>
-      </div>
-    </div>
+                {/* Instructor */}
+                <div className="flex items-center mb-6">
+                  <div className="w-12 h-12 bg-[#7AC86B] rounded-full flex items-center justify-center text-white font-semibold mr-4">
+                    <User className="w-8 h-8" />
+                  </div>
+                  <div>
+                    <p className="text-md text-gray-600">Instructor:</p>
+                    <p className="font-semibold text-lg text-gray-700">
+                      GRE Prep Expert
+                    </p>
+                  </div>
+                </div>
 
-    {/* Enrollment Count */}
-    <div className="text-sm text-gray-600 mb-4">
-      <span className="font-semibold text-gray-900">10,847</span>{" "}
-      already enrolled
-    </div>
+                {/* Enrollment Count */}
+                <div className="text-sm text-gray-600 mb-4">
+                  <span className="font-semibold text-gray-900">10,847</span>{" "}
+                  already enrolled
+                </div>
 
-    {/* Enroll Button */}
-    <button
-      onClick={handleBuyClick}
-      className="bg-[#7AC86B] text-2xl hover:bg-green-500 text-white font-semibold py-6 px-10 transition-colors mb-4"
-    >
-      Enroll Now
-    </button>
-  </div>
+                {/* Enroll Button */}
+                <button
+                  onClick={handleBuyClick}
+                  className="bg-[#7AC86B] text-2xl hover:bg-green-500 text-white font-semibold py-6 px-10 transition-colors mb-4"
+                >
+                  Enroll Now
+                </button>
+              </div>
 
-{/* RIGHT SIDE – Expanded Image */}
-<div className="w-full lg:w-3/5 flex justify-center items-center">
-  <div
-    className="w-[70%] aspect-square"
-    style={{
-      backgroundColor: "#E6F6E2",
-      WebkitMaskImage: "url('/bg.png')",
-      WebkitMaskRepeat: "no-repeat",
-      WebkitMaskSize: "contain",
-      WebkitMaskPosition: "center",
-      maskImage: "url('/bg.png')",
-      maskRepeat: "no-repeat",
-      maskSize: "contain",
-      maskPosition: "center",
-    }}
-  />
-</div>
-
-
-</div>
-
+              {/* RIGHT SIDE – Expanded Image */}
+              <div className="w-full lg:w-3/5 flex justify-center items-center">
+                <div
+                  className="w-[70%] aspect-square"
+                  style={{
+                    backgroundColor: "#E6F6E2",
+                    WebkitMaskImage: "url('/bg.png')",
+                    WebkitMaskRepeat: "no-repeat",
+                    WebkitMaskSize: "contain",
+                    WebkitMaskPosition: "center",
+                    maskImage: "url('/bg.png')",
+                    maskRepeat: "no-repeat",
+                    maskSize: "contain",
+                    maskPosition: "center",
+                  }}
+                />
+              </div>
+            </div>
 
             {/* Course Stats - 80% width and positioned slightly above */}
             <div className="flex justify-center">
@@ -364,7 +361,7 @@ const CourseDetailsPage: React.FC = () => {
                 {[
                   { id: "about", label: "About" },
                   { id: "outcomes", label: "Outcomes" },
-                  { id: "courses", label: "Courses" },
+
                   { id: "testimonials", label: "Testimonials" },
                 ].map((tab) => (
                   <button
@@ -412,26 +409,27 @@ const CourseDetailsPage: React.FC = () => {
                     </div>
                   </div>
 
-                  <div>
+                  <div className="w-full">
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">
                       Skills you'll gain
                     </h3>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 max-w-1/2">
                       {[
-                        "GRE Prep",
-                        "Data Management",
-                        "Data Visualization",
-                        "Proofreading",
-                        "Test Strategies",
-                        "Document Management",
-                        "Writing",
-                        "File Management",
-                        "Analytical Skills",
-                        "Excel Formulas",
+                        "CI/CD",
+                        "Debugging",
+                        "Git (Version Control System)",
+                        "Unit Testing",
+                        "Technical Communication",
+                        "Cloud Computing",
+                        "Automation",
+                        "GitHub",
+                        "Interviewing Skills",
+                        "Programming Principles",
+                        "Configuration Management",
                       ].map((skill, index) => (
                         <span
                           key={index}
-                          className=" text-gray-700 px-3 py-1 rounded-full text-sm"
+                          className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm whitespace-nowrap"
                         >
                           {skill}
                         </span>
@@ -474,89 +472,38 @@ const CourseDetailsPage: React.FC = () => {
               {activeTab === "outcomes" && (
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-6">
                       Learning Outcomes
                     </h3>
                     <div className="space-y-4">
-                      <div className=" rounded-lg p-4">
-                        <h4 className="font-medium text-gray-900 mb-2">
+                      <div className="border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <h4 className="font-semibold text-lg text-gray-900 mb-3">
                           Master GRE Fundamentals
                         </h4>
-                        <p className="text-gray-600">
+                        <p className="text-gray-700 leading-relaxed">
                           Develop a strong foundation in all GRE sections
                           including Verbal, Quantitative, and Analytical
                           Writing.
                         </p>
                       </div>
-                      <div className=" rounded-lg p-4">
-                        <h4 className="font-medium text-gray-900 mb-2">
+                      <div className="border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <h4 className="font-semibold text-lg text-gray-900 mb-3">
                           Test-Taking Strategies
                         </h4>
-                        <p className="text-gray-600">
+                        <p className="text-gray-700 leading-relaxed">
                           Learn proven strategies to maximize your score and
                           manage time effectively during the exam.
                         </p>
                       </div>
-                      <div className=" rounded-lg p-4">
-                        <h4 className="font-medium text-gray-900 mb-2">
+                      <div className="border border-gray-200 rounded-lg p-6 shadow-sm">
+                        <h4 className="font-semibold text-lg text-gray-900 mb-3">
                           Practice & Assessment
                         </h4>
-                        <p className="text-gray-600">
+                        <p className="text-gray-700 leading-relaxed">
                           Get extensive practice with real GRE-style questions
                           and receive detailed feedback on your performance.
                         </p>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === "courses" && (
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                      Course Modules
-                    </h3>
-                    <div className="space-y-4">
-                      {course.courseSubjects &&
-                      course.courseSubjects.length > 0 ? (
-                        course.courseSubjects.map((subject, index) => (
-                          <div
-                            key={index}
-                            className="border border-gray-200 rounded-lg p-4"
-                          >
-                            <div className="flex items-center justify-between">
-                              <div className="flex items-center">
-                                <div className="bg-blue-100 text-blue-800 rounded-full w-8 h-8 flex items-center justify-center text-sm font-semibold mr-4">
-                                  {index + 1}
-                                </div>
-                                <div>
-                                  <h4 className="font-medium text-gray-900">
-                                    {subject}
-                                  </h4>
-                                  <p className="text-sm text-gray-500">
-                                    Module {index + 1}
-                                  </p>
-                                </div>
-                              </div>
-                              <div className="flex items-center text-gray-500">
-                                <Clock className="w-4 h-4 mr-1" />
-                                <span className="text-sm">
-                                  {Math.round(
-                                    course.courseDuration /
-                                      (course.courseSubjects?.length || 1)
-                                  )}{" "}
-                                  hrs
-                                </span>
-                              </div>
-                            </div>
-                          </div>
-                        ))
-                      ) : (
-                        <div className="text-center py-8 text-gray-500">
-                          <p>Course modules will be available soon</p>
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -569,19 +516,42 @@ const CourseDetailsPage: React.FC = () => {
                       What Students Say
                     </h3>
                     <div className="space-y-4">
-                      {[1, 2, 3].map((testimonial) => (
+                      {[
+                        {
+                          id: 1,
+                          review:
+                            "This course exceeded my expectations! The content is well-structured, and the instructor explains complex concepts in an easy-to-understand manner. Highly recommended for GRE prep!",
+                          time: "2 weeks ago",
+                        },
+                        {
+                          id: 2,
+                          review:
+                            "I found the course to be incredibly helpful. The practice exercises were particularly useful in reinforcing what I learned.",
+                          time: "1 month ago",
+                        },
+                        {
+                          id: 3,
+                          review:
+                            "The instructor was very knowledgeable and responsive. The course material was comprehensive and well-organized.",
+                          time: "3 weeks ago",
+                        },
+                      ].map((testimonial) => (
                         <div
-                          key={testimonial}
+                          key={testimonial.id}
                           className="border border-gray-200 rounded-lg p-4"
                         >
                           <div className="flex items-start space-x-3">
-                            <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-semibold">
-                              S{testimonial}
+                            <div className="w-10 h-10 rounded-full overflow-hidden">
+                              <img
+                                src={`/test${testimonial.id + 4}.jpeg`} // Assuming images are named test5.jpg, test6.jpg, test7.jpg
+                                alt={`Student ${testimonial.id}`}
+                                className="w-full h-full object-cover"
+                              />
                             </div>
                             <div className="flex-1">
                               <div className="flex items-center mb-2">
                                 <h5 className="font-medium text-gray-900 mr-2">
-                                  Student {testimonial}
+                                  Student {testimonial.id}
                                 </h5>
                                 <div className="flex text-yellow-400">
                                   {[...Array(5)].map((_, i) => (
@@ -593,14 +563,10 @@ const CourseDetailsPage: React.FC = () => {
                                 </div>
                               </div>
                               <p className="text-gray-700 mb-2">
-                                This course exceeded my expectations! The
-                                content is well-structured, and the instructor
-                                explains complex concepts in an
-                                easy-to-understand manner. Highly recommended
-                                for GRE prep!
+                                {testimonial.review}
                               </p>
                               <p className="text-sm text-gray-500">
-                                2 weeks ago
+                                {testimonial.time}
                               </p>
                             </div>
                           </div>

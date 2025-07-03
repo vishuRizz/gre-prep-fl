@@ -9,6 +9,7 @@ type UserResponseDto = {
   username: string;
   email: string;
   phone: string;
+  address?: string;
   purchasedCourseIds: string[];
   orderIds: string[];
 };
@@ -56,7 +57,7 @@ export default function AdminUsersPage() {
     const filtered = users.filter(user =>
       user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
       user.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      user.phone.includes(searchTerm)
+      (user.phone || '').includes(searchTerm)
     );
     setFilteredUsers(filtered);
   }, [searchTerm, users]);
@@ -96,7 +97,7 @@ export default function AdminUsersPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <Loader2 className="h-8 w-8 animate-spin text-blue-600 mx-auto mb-4" />
+          <Loader2 className="h-8 w-8 animate-spin text-[#7AC86B] mx-auto mb-4" />
           <p className="text-gray-600">Loading users...</p>
         </div>
       </div>
@@ -111,16 +112,16 @@ export default function AdminUsersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="bg-blue-100 p-2 rounded-lg">
-                <Users className="h-6 w-6 text-blue-600" />
+              <div className="bg-[#7AC86B] p-2 rounded-lg">
+                <Users className="h-6 w-6 text-green-600" />
               </div>
               <div>
                 <h1 className="text-2xl font-bold text-gray-900">User Management</h1>
                 <p className="text-sm text-gray-600">Manage all registered users</p>
               </div>
             </div>
-            <div className="bg-blue-50 px-4 py-2 rounded-lg">
-              <span className="text-sm font-medium text-blue-700">
+            <div className="bg-green-50 px-4 py-2 rounded-lg">
+              <span className="text-sm font-medium text-green-700">
                 {filteredUsers.length} Total Users
               </span>
             </div>
@@ -146,13 +147,10 @@ export default function AdminUsersPage() {
                 placeholder="Search by username, email, or phone..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               />
             </div>
-            <button className="flex items-center space-x-2 px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-              <Filter className="h-4 w-4" />
-              <span>Filters</span>
-            </button>
+           
           </div>
         </div>
 
@@ -181,7 +179,7 @@ export default function AdminUsersPage() {
                   <tr key={user.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4 whitespace-nowrap">
                       <div className="flex items-center">
-                        <div className="h-10 w-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                        <div className="h-10 w-10 bg-[#7AC86B] rounded-full flex items-center justify-center">
                           <span className="text-white font-medium text-sm">
                             {user.username.charAt(0).toUpperCase()}
                           </span>
@@ -207,6 +205,12 @@ export default function AdminUsersPage() {
                           <Phone className="h-4 w-4 mr-2 text-gray-400" />
                           {user.phone}
                         </div>
+                        <div className="flex items-center text-sm text-gray-600">
+                          <span className="inline-block w-4 h-4 mr-2">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 text-gray-400"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                          </span>
+                          {user.address || 'N/A'}
+                        </div>
                       </div>
                     </td>
                     
@@ -219,7 +223,7 @@ export default function AdminUsersPage() {
                           </span>
                         </div>
                         <div className="flex items-center text-sm">
-                          <Receipt className="h-4 w-4 mr-2 text-blue-500" />
+                          <Receipt className="h-4 w-4 mr-2 text-[#7AC86B]" />
                           <span className="text-gray-600">
                             {user.orderIds.length} Orders
                           </span>

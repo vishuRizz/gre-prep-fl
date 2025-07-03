@@ -74,7 +74,11 @@ const AuthPage: React.FC = () => {
           toast.success('Login successful!');
           if (data.token) {
             login(data.token, formData.isAdmin && data.adminDto ? data.adminDto : undefined);
-            router.push('/');
+            if (formData.isAdmin && data.adminDto) {
+              router.push("/admin/users");
+            } else {
+              router.push('/user/profile');
+            }
           }
         } else {
           toast.success('Signup successful! Please verify your email.');
