@@ -6,7 +6,7 @@ import { useAuth } from '@/components/AuthContext';
 import { toast } from 'sonner';
 
 export default function AdminLoginPage() {
-  const [formData, setFormData] = useState({ username: "", password: "" });
+  const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
   const { login } = useAuth();
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function AdminLoginPage() {
       const res = await fetch("http://localhost:8080/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ email: formData.email, password: formData.password }),
       });
 
       if (!res.ok) {
@@ -52,10 +52,10 @@ export default function AdminLoginPage() {
       <h2>Admin Login</h2>
       <form onSubmit={handleSubmit}>
         <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
           onChange={handleChange}
           required
           style={{ display: "block", marginBottom: 10, width: "100%" }}

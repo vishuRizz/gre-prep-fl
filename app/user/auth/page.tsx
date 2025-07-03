@@ -6,7 +6,6 @@ import { Eye, EyeOff, Lock, Mail, User, Shield } from 'lucide-react';
 import { useAuth } from '@/components/AuthContext';
 import { toast } from 'sonner';
 interface FormData {
-  username: string;
   email: string;
   password: string;
   isAdmin: boolean;
@@ -15,11 +14,11 @@ interface FormData {
 const AuthPage: React.FC = () => {
   const [mode, setMode] = useState<'login' | 'signup'>('login');
   const [formData, setFormData] = useState<FormData>({
-    username: '',
     email: '',
     password: '',
     isAdmin: false
   });
+  const [username, setUsername] = useState('');
   const [message, setMessage] = useState<string>('');
   const [showReset, setShowReset] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -29,10 +28,14 @@ const AuthPage: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: type === 'checkbox' ? checked : value
-    }));
+    if (mode === 'signup' && name === 'username') {
+      setUsername(value);
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -45,12 +48,12 @@ const AuthPage: React.FC = () => {
     
     if (mode === 'login') {
       endpoint = 'http://localhost:8080/api/user/login';
-      payload = { username: formData.username, password: formData.password };
+      payload = { email: formData.email, password: formData.password };
     } else {
       endpoint = formData.isAdmin
         ? 'http://localhost:8080/admin/create'
         : 'http://localhost:8080/public/user/create';
-      payload = { username: formData.username, email: formData.email, password: formData.password };
+      payload = { username, email: formData.email, password: formData.password };
     }
     
     try {
@@ -121,45 +124,45 @@ const AuthPage: React.FC = () => {
           
           {/* Form */}
           <form className="space-y-6" onSubmit={handleSubmit}>
-            {/* Username */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Username
-              </label>
-              <div className="relative">
-                <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  name="username"
-                  value={formData.username}
-                  onChange={handleInputChange}
-                  placeholder="Enter your username"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  required
-                />
-              </div>
-            </div>
-            
-            {/* Email (Signup only) */}
+            {/* Username (Signup only) */}
             {mode === 'signup' && (
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Email Address
+                  Username
                 </label>
                 <div className="relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                  <User className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
                   <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
+                    type="text"
+                    name="username"
+                    value={username}
                     onChange={handleInputChange}
-                    placeholder="Enter your email"
+                    placeholder="Enter your username"
                     className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                   />
                 </div>
               </div>
             )}
+            
+            {/* Email (Login and Signup) */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
+              </label>
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Enter your email"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  required
+                />
+              </div>
+            </div>
             
             {/* Password */}
             <div>
