@@ -80,7 +80,7 @@ const Navbar: React.FC = () => {
                 ? 'text-gray-200 hover:text-emerald-400' 
                 : 'text-white hover:text-emerald-400'
             }`}>
-              courses
+              Courses
             </a>
             {isAdmin && (
               <a href="/admin/users" className={`text-base font-medium transition-colors ${
