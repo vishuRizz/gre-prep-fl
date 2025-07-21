@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import Link from 'next/link';
 
 interface StudentTestimonial {
   id: number;
@@ -268,9 +269,11 @@ const TTPTestimonialSection: React.FC = () => {
           </div>
 
           {/* CTA Button */}
-          <button className="bg-[#7AC86B] hover:bg-[#7AC86B] text-white font-semibold py-3 px-8 sm:py-4 sm:px-12 rounded-lg text-base sm:text-lg transition-colors">
-            TRY THE COURSE FOR FREE
-          </button>
+         <Link href="/courses">
+  <button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg">
+    Get Your Course
+  </button>
+</Link>
         </div>
       </div>
     </div>

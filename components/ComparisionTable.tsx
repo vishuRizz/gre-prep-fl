@@ -1,6 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { Check, X, Info, Star, Award, Zap } from 'lucide-react';
+import Link from 'next/link';
 
 const GREComparisonTable: React.FC = () => {
   const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
@@ -288,9 +289,11 @@ const GREComparisonTable: React.FC = () => {
 
       {/* Call to Action */}
       <div className="mt-12 text-center">
-        <button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg">
-          Get Started Today
-        </button>
+     <Link href="/courses">
+  <button className="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg">
+    Get Started Today
+  </button>
+</Link>
       </div>
     </div>
   );

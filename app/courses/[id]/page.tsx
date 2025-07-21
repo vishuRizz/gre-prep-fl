@@ -140,7 +140,16 @@ const CourseDetailsPage: React.FC = () => {
           { cache: "no-store" }
         );
         if (res.ok) {
-          setCourse(await res.json());
+          const courseData = await res.json();
+          // Ensure courseSubjects is always an array
+          if (courseData) {
+            courseData.courseSubjects = Array.isArray(courseData.courseSubjects) 
+              ? courseData.courseSubjects 
+              : typeof courseData.courseSubjects === 'string' 
+                ? courseData.courseSubjects.split(',').map((s: string) => s.trim())
+                : [];
+          }
+          setCourse(courseData);
         } else {
           setCourse(null);
         }
@@ -388,9 +397,7 @@ const CourseDetailsPage: React.FC = () => {
                       What you'll learn
                     </h3>
                     <div className="space-y-3">
-                      {course.courseSubjects &&
-                      Array.isArray(course.courseSubjects) &&
-                      course.courseSubjects.length > 0 ? (
+                      {course.courseSubjects && course.courseSubjects.length > 0 ? (
                         course.courseSubjects.map((subject, index) => (
                           <div key={index} className="flex items-start">
                             <Check className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
