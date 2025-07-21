@@ -611,36 +611,40 @@ const CourseDetailsPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Testimonials Section */}
-          <div className="p-4 sm:p-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
-              Why people choose Us for their career
-            </h2>
-            <div className="flex overflow-x-auto gap-4 pb-4">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-md p-4 sm:p-6 flex-shrink-0"
-                  style={{ minWidth: "280px", maxWidth: "320px" }}
-                >
-                  <div className="flex items-center mb-4">
-                    <img
-                      src={testimonial.imageUrl}
-                      alt={testimonial.name}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4"
-                    />
-                    <div>
-                      <h3 className="font-semibold text-sm sm:text-base">{testimonial.name}</h3>
-                      <p className="text-xs sm:text-sm text-gray-500">
-                        {testimonial.since}
-                      </p>
-                    </div>
-                  </div>
-                  <p className="text-sm sm:text-base text-gray-700 italic">"{testimonial.quote}"</p>
-                </div>
-              ))}
-            </div>
+
+
+           {/* Testimonials Section */}
+  {/* Testimonials Section */}
+<div className="p-4 sm:p-6">
+  <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+    Why people choose Us for their career
+  </h2>
+  <div className="flex flex-col sm:flex-row sm:flex-wrap xl:overflow-x-auto xl:flex-nowrap gap-4 pb-4">
+    {testimonials.map((testimonial, index) => (
+      <div
+        key={index}
+        className="bg-white rounded-lg shadow-md p-4 sm:p-6 w-full sm:w-auto sm:flex-1 sm:min-w-[280px] sm:max-w-[320px] xl:flex-shrink-0"
+      >
+        <div className="flex items-center mb-4">
+          <img
+            src={testimonial.imageUrl}
+            alt={testimonial.name}
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-full mr-3 sm:mr-4"
+          />
+          <div>
+            <h3 className="font-semibold text-sm sm:text-base">{testimonial.name}</h3>
+            <p className="text-xs sm:text-sm text-gray-500">
+              {testimonial.since}
+            </p>
           </div>
+        </div>
+        <p className="text-sm sm:text-base text-gray-700 italic">"{testimonial.quote}"</p>
+      </div>
+    ))}
+  </div>
+</div>
+
+          
 
           <FaqComponent />
         </div>
