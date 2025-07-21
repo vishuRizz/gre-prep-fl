@@ -96,7 +96,7 @@ const CoursesPage: React.FC = () => {
     <div className="flex justify-center items-center py-20">
       <div className="relative">
         <div className="w-12 h-12 rounded-full border-4 border-gray-200"></div>
-        <div className="w-12 h-12 rounded-full border-4 border-green-600 border-t-transparent animate-spin absolute top-0 left-0"></div>
+        <div className="w-12 h-12 rounded-full border-4 border-[#7AC86B] border-t-transparent animate-spin absolute top-0 left-0"></div>
       </div>
     </div>
   );
@@ -137,7 +137,7 @@ const CoursesPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-green-600 via-green-700 to-green-500 text-white relative overflow-hidden mt-10">
+      <div className="bg-gradient-to-br from-[#7AC86B] via-green-500 to-green-500 text-white relative overflow-hidden mt-10">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
@@ -285,7 +285,7 @@ const CoursesPage: React.FC = () => {
                   </div>
 
                   <Link href={`/courses/${course.id}`} className="block">
-                    <button className="w-full bg-green-600 text-white py-3 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-sm hover:shadow-md">
+                    <button className="w-full bg-[#7AC86B] text-white py-3 rounded-lg font-medium hover:bg-green-500 transition-colors shadow-sm hover:shadow-md">
                       View Course Details
                     </button>
                   </Link>
