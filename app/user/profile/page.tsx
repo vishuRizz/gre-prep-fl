@@ -1,8 +1,24 @@
 "use client";
-import React, { useEffect, useState } from 'react';
-import { User, Mail, Phone, MapPin, Calendar, ShoppingCart, FileText, Settings, Lock, LogOut, Trash2, Edit3, Save, X } from 'lucide-react';
-import { toast } from 'sonner';
-import Navbar from '@/components/Navbar';
+import React, { useEffect, useState } from "react";
+import {
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Calendar,
+  ShoppingCart,
+  FileText,
+  Settings,
+  Lock,
+  LogOut,
+  Trash2,
+  Edit3,
+  Save,
+  X,
+} from "lucide-react";
+import { toast } from "sonner";
+import Navbar from "@/components/Navbar";
+
 
 interface UserDto {
   id: string;
@@ -17,47 +33,53 @@ interface UserDto {
 
 const UserProfile: React.FC = () => {
   const [userData, setUserData] = useState<UserDto | null>(null);
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
     if (!token) return;
-    fetch('http://localhost:8080/public/user/api/me', {
-      headers: { Authorization: `Bearer ${token}` }
+    fetch("http://localhost:8080/public/user/api/me", {
+      headers: { Authorization: `Bearer ${token}` },
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setUserData(data);
-        setPhone(data.phone || '');
-        setAddress(data.address || '');
+        setPhone(data.phone || "");
+        setAddress(data.address || "");
         setLoading(false);
       });
   }, []);
 
   const handleSave = async () => {
     setIsEditing(false);
-    const token = localStorage.getItem('token');
-    const res = await fetch('http://localhost:8080/public/user/api/update-profile', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-      body: JSON.stringify({ phone, address }),
-    });
+    const token = localStorage.getItem("token");
+    const res = await fetch(
+      "http://localhost:8080/public/user/api/update-profile",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ phone, address }),
+      }
+    );
     if (res.ok) {
-      toast.success('Profile updated!');
-      setUserData(prev => prev ? { ...prev, phone, address } : prev);
+      toast.success("Profile updated!");
+      setUserData((prev) => (prev ? { ...prev, phone, address } : prev));
     } else {
-      toast.error('Failed to update profile');
+      toast.error("Failed to update profile");
     }
   };
 
   const handleCancel = () => {
     setIsEditing(false);
     if (userData) {
-      setPhone(userData.phone || '');
-      setAddress(userData.address || '');
+      setPhone(userData.phone || "");
+      setAddress(userData.address || "");
     }
   };
 
@@ -67,7 +89,7 @@ const UserProfile: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
       {/* Header */}
-      <Navbar/>
+      <Navbar />
       <div className="bg-white shadow-sm border-b mt-18 border-gray-200">
         <div className="max-w-7xl mx-auto px-8 py-6">
           <div className="flex items-center justify-between">
@@ -76,8 +98,12 @@ const UserProfile: React.FC = () => {
                 <span className="text-white font-bold text-lg">P</span>
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Profile Management</h1>
-                <p className="text-sm text-gray-500">Manage your account information and preferences</p>
+                <h1 className="text-2xl font-bold text-gray-900">
+                  Profile Management
+                </h1>
+                <p className="text-sm text-gray-500">
+                  Manage your account information and preferences
+                </p>
               </div>
             </div>
             <div className="flex items-center space-x-3">
@@ -128,7 +154,9 @@ const UserProfile: React.FC = () => {
                     <span className="text-white text-sm font-bold">✓</span>
                   </div>
                 </div>
-                <h2 className="text-2xl font-bold text-white mb-2">{userData.username}</h2>
+                <h2 className="text-2xl font-bold text-white mb-2">
+                  {userData.username}
+                </h2>
                 <p className="text-green-100 text-sm font-medium">User</p>
                 <div className="mt-4 inline-flex items-center px-4 py-2 bg-white/20 rounded-full">
                   <div className="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
@@ -143,14 +171,20 @@ const UserProfile: React.FC = () => {
                     <div className="bg-green-50 rounded-xl p-4 mb-3">
                       <ShoppingCart className="w-6 h-6 text-green-600 mx-auto" />
                     </div>
-                    <div className="text-2xl font-bold text-gray-900">{userData.orderIds ? userData.orderIds.length : 0}</div>
+                    <div className="text-2xl font-bold text-gray-900">
+                      {userData.orderIds ? userData.orderIds.length : 0}
+                    </div>
                     <div className="text-sm text-gray-500">Orders</div>
                   </div>
                   <div className="text-center">
                     <div className="bg-green-50 rounded-xl p-4 mb-3">
                       <FileText className="w-6 h-6 text-green-600 mx-auto" />
                     </div>
-                    <div className="text-2xl font-bold text-gray-900">{userData.purchasedCourseIds ? userData.purchasedCourseIds.length : 0}</div>
+                    <div className="text-2xl font-bold text-gray-900">
+                      {userData.purchasedCourseIds
+                        ? userData.purchasedCourseIds.length
+                        : 0}
+                    </div>
                     <div className="text-sm text-gray-500">Courses</div>
                   </div>
                 </div>
@@ -161,9 +195,16 @@ const UserProfile: React.FC = () => {
                     <User className="w-4 h-4 mr-3" />
                     Personal Information
                   </button>
-                  <button className="w-full flex items-center px-4 py-3 text-left text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
-                    <Lock className="w-4 h-4 mr-3" />
-                    Security Settings
+                  <button
+                    onClick={() => {
+                      localStorage.clear();
+                      sessionStorage.clear();
+                      window.location.href = "/user/auth"; // or use navigate() if using React Router
+                    }}
+                    className="w-full flex items-center px-4 py-3 text-left text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-xl transition-colors"
+                  >
+                    <LogOut className="w-4 h-4 mr-3" />
+                    Logout
                   </button>
                   <button className="w-full flex items-center px-4 py-3 text-left text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
                     <Settings className="w-4 h-4 mr-3" />
@@ -178,15 +219,21 @@ const UserProfile: React.FC = () => {
           <div className="col-span-8">
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <div className="px-8 py-6 border-b border-gray-100">
-                <h3 className="text-xl font-bold text-gray-900">Personal Information</h3>
-                <p className="text-sm text-gray-500 mt-1">Update your personal details and contact information</p>
+                <h3 className="text-xl font-bold text-gray-900">
+                  Personal Information
+                </h3>
+                <p className="text-sm text-gray-500 mt-1">
+                  Update your personal details and contact information
+                </p>
               </div>
 
               <div className="p-8">
                 <div className="space-y-8">
                   {/* User ID */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">User ID</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      User ID
+                    </label>
                     <input
                       type="text"
                       value={userData.id}
@@ -196,7 +243,9 @@ const UserProfile: React.FC = () => {
                   </div>
                   {/* Username */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">Name</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Name
+                    </label>
                     <input
                       type="text"
                       value={userData.username}
@@ -206,7 +255,9 @@ const UserProfile: React.FC = () => {
                   </div>
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">Email Address</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Email Address
+                    </label>
                     <input
                       type="email"
                       value={userData.email}
@@ -216,22 +267,26 @@ const UserProfile: React.FC = () => {
                   </div>
                   {/* Phone */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">Phone</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Phone
+                    </label>
                     <input
                       type="text"
                       value={phone}
-                      onChange={e => setPhone(e.target.value)}
+                      onChange={(e) => setPhone(e.target.value)}
                       disabled={!isEditing}
                       className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 disabled:bg-gray-50 disabled:text-gray-600 text-sm font-medium"
                     />
                   </div>
                   {/* Address */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-3">Address</label>
+                    <label className="block text-sm font-semibold text-gray-700 mb-3">
+                      Address
+                    </label>
                     <input
                       type="text"
                       value={address}
-                      onChange={e => setAddress(e.target.value)}
+                      onChange={(e) => setAddress(e.target.value)}
                       disabled={!isEditing}
                       className="w-full px-4 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 disabled:bg-gray-50 disabled:text-gray-600 text-sm font-medium"
                     />

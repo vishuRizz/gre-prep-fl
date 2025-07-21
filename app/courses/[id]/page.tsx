@@ -389,6 +389,7 @@ const CourseDetailsPage: React.FC = () => {
                     </h3>
                     <div className="space-y-3">
                       {course.courseSubjects &&
+                      Array.isArray(course.courseSubjects) &&
                       course.courseSubjects.length > 0 ? (
                         course.courseSubjects.map((subject, index) => (
                           <div key={index} className="flex items-start">

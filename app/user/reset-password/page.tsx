@@ -1,4 +1,5 @@
-'use client';
+ 'use client';
+export const dynamic = 'force-dynamic'; // ✅ Add this line
 import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 
@@ -45,8 +46,3 @@ export default function ResetPasswordPage() {
     </form>
   );
 }
-
-
-
-
-

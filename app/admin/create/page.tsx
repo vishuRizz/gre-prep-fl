@@ -1,24 +1,30 @@
 'use client'
-import { useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function AdminCreatePage() {
-  const [formData, setFormData] = useState({
+interface FormData {
+  email: string;
+  username: string;
+  password: string;
+}
+
+export default function AdminCreatePage(): React.JSX.Element {
+  const [formData, setFormData] = useState<FormData>({
     email: "",
     username: "",
     password: ""
   });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     setError(null);
 
