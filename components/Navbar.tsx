@@ -34,9 +34,9 @@ const Navbar: React.FC = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
       isHomePage 
         ? (isScrolled 
-            ? 'bg-gray-700 backdrop-blur-md border-b border-gray-800' 
+            ? 'bg-gray-500 backdrop-blur-md border-b border-gray-500' 
             : 'bg-transparent')
-        : 'bg-gray-800 backdrop-blur-md border-b border-gray-700'
+        : 'bg-gray-700 backdrop-blur-md border-b border-gray-700'
     }`}>
       <div className="max-w-[1450px] mx-auto px-8">
         <div className="flex justify-between items-center h-20">
