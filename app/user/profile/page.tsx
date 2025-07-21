@@ -206,10 +206,7 @@ const UserProfile: React.FC = () => {
                     <LogOut className="w-4 h-4 mr-3" />
                     Logout
                   </button>
-                  <button className="w-full flex items-center px-4 py-3 text-left text-sm font-medium text-gray-600 hover:bg-gray-50 rounded-xl transition-colors">
-                    <Settings className="w-4 h-4 mr-3" />
-                    Preferences
-                  </button>
+                 
                 </div>
               </div>
             </div>
