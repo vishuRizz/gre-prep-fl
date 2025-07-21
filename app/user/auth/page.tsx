@@ -454,7 +454,7 @@ const AuthPage: React.FC = () => {
                   </div>
                   
                   {/* Admin Option */}
-                  {/* <div className="flex items-center bg-gray-50 rounded-xl p-3">
+                  <div className="flex items-center bg-gray-50 rounded-xl p-3">
                     <input
                       type="checkbox"
                       name="isAdmin"
@@ -466,7 +466,7 @@ const AuthPage: React.FC = () => {
                       <Shield className="w-4 h-4 mr-1" />
                       Register as Admin
                     </label>
-                  </div> */}
+                  </div>
                   
                   {/* Submit Button */}
                   <button

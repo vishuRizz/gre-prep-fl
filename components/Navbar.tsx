@@ -36,7 +36,13 @@ const Navbar: React.FC = () => {
         ? (isScrolled 
             ? 'bg-gray-500 backdrop-blur-md border-b border-gray-500' 
             : 'bg-transparent')
-        : 'bg-gray-700 backdrop-blur-md border-b border-gray-700'
+        :'bg-gradient-to-r from-green-500/60 to-emerald-500/30 backdrop-blur-md border-b border-green-300 text-white'
+
+
+
+
+
+
     }`}>
       <div className="max-w-[1450px] mx-auto px-8">
         <div className="flex justify-between items-center h-20">

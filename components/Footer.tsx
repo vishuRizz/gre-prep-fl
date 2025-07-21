@@ -5,63 +5,62 @@ const Footer: React.FC = () => {
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-green-50 via-green-100 to-[#7AC86B] py-20 px-8">
+      <div className="relative bg-gradient-to-br from-green-50 via-green-100 to-[#7AC86B] py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           {/* Logo/Icon */}
-          <div className="mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-lg">
-              <div className="w-8 h-8 bg-[#7AC86B] rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">G</span>
+          <div className="mb-6 sm:mb-8">
+            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl shadow-lg">
+              <div className="w-6 h-6 sm:w-8 sm:h-8 bg-[#7AC86B] rounded-md sm:rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-sm sm:text-lg">G</span>
               </div>
             </div>
           </div>
 
           {/* Main Heading */}
-          <h1 className=" font-playfair text-3xl md:text-5xl font-bold text-gray-800 mb-8 leading-tight">
+          <h1 className=" font-playfair text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-6 sm:mb-8 leading-tight px-2">
             Get started with<br />
             GRE Prep today!
           </h1>
 
           {/* Feature Points */}
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-10 text-sm">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-10 text-xs sm:text-sm px-4">
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-[#7AC86B] rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="w-4 h-4 sm:w-5 sm:h-5 bg-[#7AC86B] rounded-full flex items-center justify-center">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
               </div>
               <span className="text-gray-700 font-medium">Personalized Study Plans</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-[#7AC86B] rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="w-4 h-4 sm:w-5 sm:h-5 bg-[#7AC86B] rounded-full flex items-center justify-center">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
               </div>
               <span className="text-gray-700 font-medium">Expert GRE Instructors</span>
             </div>
             <div className="flex items-center gap-2">
-              <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-white rounded-full"></div>
+              <div className="w-4 h-4 sm:w-5 sm:h-5 bg-green-500 rounded-full flex items-center justify-center">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full"></div>
               </div>
               <span className="text-gray-700 font-medium">Score Improvement Guarantee</span>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
           <Link href="/contact">
-            <button className="bg-[#7AC86B] hover:bg-green-600 text-white px-8 py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2">
+            <button className="w-full sm:w-auto bg-[#7AC86B] hover:bg-green-600 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm sm:text-base">
              Contact Us
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
             </button>
             </Link>
             <Link href="/courses">
-            <button className="bg-white hover:bg-gray-50 text-gray-700 px-8 py-3 rounded-lg font-medium border border-gray-200 transition-colors">
+            <button className="w-full sm:w-auto bg-white hover:bg-gray-50 text-gray-700 px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium border border-gray-200 transition-colors text-sm sm:text-base">
               Learn More
             </button>
             </Link>
           </div>
         </div>
       </div>
-
-      {/* Footer Section */}
+      {/* Footer Section */}  
       <div className="bg-white py-16 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

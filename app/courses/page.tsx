@@ -137,7 +137,7 @@ const CoursesPage: React.FC = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-[#7AC86B] via-green-500 to-green-500 text-white relative overflow-hidden mt-10">
+      <div className="bg-gradient-to-br from-[#7AC86B] via-green-500 to-green-500 text-white relative overflow-hidden pt-10">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
