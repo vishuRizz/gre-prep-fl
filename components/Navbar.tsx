@@ -167,7 +167,7 @@ const Navbar: React.FC = () => {
                   <Button
                     variant="default"
                     size="sm"
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                    className="bg-green-500 hover:bg-emerald-700 text-white"
                     asChild
                   >
                     <a href="/user/profile" className="flex items-center">
@@ -229,7 +229,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu Panel */}
-      <div className={`fixed top-0 left-0 z-50 h-full w-80 max-w-[85vw] bg-[#368f8b] shadow-2xl transform transition-transform duration-300 ease-in-out xl:hidden ${
+      <div className={`fixed top-0 left-0 z-50 h-full w-80 max-w-[85vw] bg-gray-800 shadow-2xl transform transition-transform duration-300 ease-in-out xl:hidden ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="flex flex-col h-full">
