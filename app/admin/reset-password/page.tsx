@@ -1,10 +1,9 @@
 'use client';
-export const dynamic = 'force-dynamic';
 
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 
-export default function AdminResetPasswordPage() {
+function ResetPasswordForm() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
   const [password, setPassword] = useState('');
@@ -52,5 +51,10 @@ export default function AdminResetPasswordPage() {
   );
 }
 
-
-
+export default function AdminResetPasswordPage() {
+  return (
+    <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
+      <ResetPasswordForm />
+    </Suspense>
+  );
+}
