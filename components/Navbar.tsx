@@ -37,12 +37,6 @@ const Navbar: React.FC = () => {
             ? 'bg-gray-500 backdrop-blur-md border-b border-gray-500' 
             : 'bg-transparent')
         :'bg-gradient-to-r from-green-500/60 to-emerald-500/30 backdrop-blur-md border-b border-green-300 text-white'
-
-
-
-
-
-
     }`}>
       <div className="max-w-[1450px] mx-auto px-8">
         <div className="flex justify-between items-center h-20">
@@ -134,11 +128,10 @@ const Navbar: React.FC = () => {
                   <a href="/user/auth">Login</a>
                 </Button>
                 <Button 
-                  variant="outline" 
-                  className={`px-6 py-2.5 text-sm rounded font-semibold transition-all duration-300 ${
+                  className={`px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
                   isScrolled 
-                    ? 'bg-[#7AC86B] text-white hover:bg-emerald-600 shadow-lg' 
-                    : 'bg-[#7AC86B] text-white hover:bg-emerald-600'
+                    ? 'bg-[#7AC86B] hover:bg-emerald-600 text-white shadow-lg' 
+                    : 'bg-[#7AC86B] hover:bg-emerald-600 text-white'
                 }`}
                   asChild
                 >
@@ -148,30 +141,55 @@ const Navbar: React.FC = () => {
             )}
            
             {isLoggedIn && !isAdmin && (
-              <a
-                href="/user/profile"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-4 py-2 rounded transition-colors mr-2 flex items-center"
-                style={{ display: 'flex', alignItems: 'center' }}
-                title="Profile"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-1">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.75a.75.75 0 01-.75.75h-13.5a.75.75 0 01-.75-.75v-.75z" />
-                </svg>
-                Profile
-              </a>
+              <>
+                <Button 
+                  className={`px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                  isScrolled 
+                    ? 'bg-[#7AC86B] hover:bg-emerald-600 text-white shadow-lg' 
+                    : 'bg-[#7AC86B] hover:bg-emerald-600 text-white'
+                }`}
+                  asChild
+                >
+                  <a href="/contact">Enquire Now</a>
+                </Button>
+                <Button
+                  variant="default"
+                  className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                  asChild
+                >
+                  <a href="/user/profile" className="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 ">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.75a.75.75 0 01-.75.75h-13.5a.75.75 0 01-.75-.75v-.75z" />
+                    </svg>
+                 
+                  </a>
+                </Button>
+              </>
             )}
 
             {isLoggedIn && isAdmin && (
-              <button
-                onClick={handleLogout}
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded transition-colors flex items-center"
-                title="Logout"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-1">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
-                </svg>
-                Logout
-              </button>
+              <>
+                <Button 
+                  className={`px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                  isScrolled 
+                    ? 'bg-[#7AC86B] hover:bg-emerald-600 text-white shadow-lg' 
+                    : 'bg-[#7AC86B] hover:bg-emerald-600 text-white'
+                }`}
+                  asChild
+                >
+                  <a href="/contact">Enquire Now</a>
+                </Button>
+                <Button
+                  variant="destructive"
+                  className="bg-red-600 hover:bg-red-700"
+                  onClick={handleLogout}
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                  </svg>
+                  Logout
+                </Button>
+              </>
             )}
         
           </div>
