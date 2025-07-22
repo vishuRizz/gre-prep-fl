@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
 
             {/* Desktop Navigation Links */}
             <div className="hidden xl:flex items-center space-x-8 lg:space-x-10">
-              <a href="#" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
+              <a href="/pricing" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
                 Plans
               </a>
               <a href="/courses" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
@@ -262,7 +262,7 @@ const Navbar: React.FC = () => {
             {/* Navigation Links */}
             <div className="px-4 space-y-2">
               <a 
-                href="#" 
+                href="/pricing" 
                 className="block px-4 py-3 text-white hover:bg-gray-700 rounded-lg transition-colors font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
