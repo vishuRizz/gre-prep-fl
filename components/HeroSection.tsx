@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button"
+import Link from "next/link";
 
 export default function HeroSection () {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -108,9 +109,12 @@ export default function HeroSection () {
 
           {/* CTA Section */}
           <div className="space-y-3 pt-2">
+            <Link href='/courses'>
             <Button className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-semibold py-4 px-8 text-base rounded-full shadow-2xl transform hover:scale-105 transition-all duration-300">
               START YOUR FREE TRIAL
             </Button>
+            </Link>
+
             
             <p className="text-gray-300 text-sm">
               No credit card required • 7-day full access • Cancel anytime
