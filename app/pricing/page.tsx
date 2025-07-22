@@ -239,54 +239,6 @@ const GREPricingPage: React.FC = () => {
             </div>
           </div>
 
-          {/* Enterprise Plan */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 max-w-sm mx-auto lg:max-w-none lg:mx-0">
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Enterprise</h3>
-              <div className="mb-4">
-                <span className="text-sm text-gray-600">Custom pricing</span>
-              </div>
-              <p className="text-sm text-gray-600">
-                For institutions to manage with scalability, control, and dedicated support.
-              </p>
-            </div>
-            
-            <button className="w-full py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 mb-6">
-              Contact Sales
-            </button>
-
-            <div className="space-y-3">
-              <p className="text-sm text-gray-600 mb-3">Everything in Premium</p>
-              <FeatureItem text="Student management (SSO)" />
-              <FeatureItem text="Advanced security & controls" />
-              <FeatureItem text="Analytics dashboard" />
-              <FeatureItem text="Dedicated success manager" />
-              <FeatureItem text="Compliance & security integrations (LTI, SIEM)" />
-              <FeatureItem text="Bulk licensing" />
-              <FeatureItem text="Custom integrations" />
-              
-              <div className="pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-2 mb-3">
-                  <Star className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm font-medium text-gray-700">GRE AI</span>
-                </div>
-                <div className="space-y-2 ml-6">
-                  <div className="text-sm text-gray-700">GRE AI included</div>
-                  <div className="text-sm text-gray-700">Enterprise analytics</div>
-                  <div className="flex space-x-1 items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500 ml-1">Beta</span>
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  </div>
-                  <div className="text-sm text-gray-600">AI coaching notes <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
-                  <div className="text-sm text-gray-600">Advanced insights <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
