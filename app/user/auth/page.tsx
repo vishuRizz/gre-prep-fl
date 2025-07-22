@@ -62,12 +62,12 @@ const AuthPage: React.FC = () => {
     let payload: any = {};
 
     if (mode === "login") {
-      endpoint = "http://localhost:8080/api/user/login";
+      endpoint = "https://greprepcoach-service-177259961249.asia-south1.run.app/api/user/login";
       payload = { email: formData.email, password: formData.password };
     } else {
       endpoint = formData.isAdmin
-        ? "http://localhost:8080/admin/create"
-        : "http://localhost:8080/public/user/create";
+        ? "https://greprepcoach-service-177259961249.asia-south1.run.app/admin/create"
+        : "https://greprepcoach-service-177259961249.asia-south1.run.app/public/user/create";
       payload = {
         username,
         email: formData.email,
@@ -611,8 +611,8 @@ const ForgotPasswordModal: React.FC<ForgotPasswordModalProps> = ({
     setIsLoading(true);
 
     const endpoint = isAdmin
-      ? "http://localhost:8080/admin/api/request-password-reset"
-      : "http://localhost:8080/user/api/request-password-reset";
+      ? "https://greprepcoach-service-177259961249.asia-south1.run.app/admin/api/request-password-reset"
+      : "https://greprepcoach-service-177259961249.asia-south1.run.app/user/api/request-password-reset";
 
     try {
       const res = await fetch(endpoint, {
@@ -735,7 +735,7 @@ const ResetPasswordPage: React.FC = () => {
     setIsLoading(true);
     try {
       const res = await fetch(
-        "http://localhost:8080/user/api/reset-password-with-token",
+        "https://greprepcoach-service-177259961249.asia-south1.run.app/user/api/reset-password-with-token",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

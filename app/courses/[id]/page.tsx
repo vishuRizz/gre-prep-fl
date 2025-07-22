@@ -136,7 +136,7 @@ const CourseDetailsPage: React.FC = () => {
     const fetchCourse = async (): Promise<void> => {
       try {
         const res = await fetch(
-          `http://localhost:8080/public/getCourseById?courseId=${params.id}`,
+          `https://greprepcoach-service-177259961249.asia-south1.run.app/public/getCourseById?courseId=${params.id}`,
           { cache: "no-store" }
         );
         if (res.ok) {

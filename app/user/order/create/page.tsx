@@ -17,7 +17,7 @@ export default function CreateOrderPage() {
 
   useEffect(() => {
     // Fetch all available courses
-    fetch('http://localhost:8080/public/getAllCourses')
+    fetch('https://greprepcoach-service-177259961249.asia-south1.run.app/public/getAllCourses')
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
@@ -59,7 +59,7 @@ export default function CreateOrderPage() {
       return;
     }
 
-    const res = await fetch('http://localhost:8080/user/api/createOrder', {
+    const res = await fetch('https://greprepcoach-service-177259961249.asia-south1.run.app/user/api/createOrder', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

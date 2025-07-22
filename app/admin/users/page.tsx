@@ -30,7 +30,7 @@ export default function AdminUsersPage() {
       setLoading(false);
       return;
     }
-    fetch("http://localhost:8080/admin/api/getUsers", {
+    fetch("https://greprepcoach-service-177259961249.asia-south1.run.app/admin/api/getUsers", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -75,7 +75,7 @@ export default function AdminUsersPage() {
     
     setDeletingUserId(id);
     try {
-      const res = await fetch(`http://localhost:8080/admin/api/delete-user?id=${id}`, {
+      const res = await fetch(`https://greprepcoach-service-177259961249.asia-south1.run.app/admin/api/delete-user?id=${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

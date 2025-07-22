@@ -28,7 +28,7 @@ const ContactPage: React.FC = () => {
     setStatus("");
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8080/public/Contact-Us", {
+      const res = await fetch("https://greprepcoach-service-177259961249.asia-south1.run.app/public/Contact-Us", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

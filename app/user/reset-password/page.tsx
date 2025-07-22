@@ -13,7 +13,7 @@ export default function ResetPasswordPage() {
     e.preventDefault();
     setMessage('');
     try {
-      const res = await fetch('http://localhost:8080/user/api/reset-password-with-token', {
+      const res = await fetch('https://greprepcoach-service-177259961249.asia-south1.run.app/user/api/reset-password-with-token', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, password }),

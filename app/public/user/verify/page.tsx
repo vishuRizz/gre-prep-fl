@@ -13,7 +13,7 @@ export default function UserVerifyPage() {
       return;
     }
     // Call your backend to verify the token
-    fetch(`http://localhost:8080/public/user/verify?token=${token}`)
+    fetch(`https://greprepcoach-service-177259961249.asia-south1.run.app/public/user/verify?token=${token}`)
       .then(res => res.text())
       .then(text => setMessage(text))
       .catch(() => setMessage('Verification failed. Please try again.'));

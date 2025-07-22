@@ -47,6 +47,22 @@ body {
   background: white;
 }
 
+/* Add to your global CSS file */
+.main-content-wrapper {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* This class will be toggled by JavaScript */
+.main-content-wrapper.menu-open {
+  transform: translateX(85vw);
+}
+
+@media (min-width: 1280px) {
+  .main-content-wrapper.menu-open {
+    transform: none;
+  }
+}
+
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);

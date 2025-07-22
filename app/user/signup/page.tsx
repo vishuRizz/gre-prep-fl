@@ -5,12 +5,12 @@ import { useState } from "react";
 
 const API_ENDPOINTS = {
   signup: {
-    user: "http://localhost:8080/public/user/create",
-    admin: "http://localhost:8080/admin/create",
+    user: "https://greprepcoach-service-177259961249.asia-south1.run.app/public/user/create",
+    admin: "https://greprepcoach-service-177259961249.asia-south1.run.app/admin/create",
   },
   login: {
-    user: "http://localhost:8080/api/user/login",
-    admin: "http://localhost:8080/api/user/login", // same endpoint, but check admin in response
+    user: "https://greprepcoach-service-177259961249.asia-south1.run.app/api/user/login",
+    admin: "https://greprepcoach-service-177259961249.asia-south1.run.app/api/user/login", // same endpoint, but check admin in response
   },
 };
 

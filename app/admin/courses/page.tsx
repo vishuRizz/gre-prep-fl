@@ -18,7 +18,7 @@ const CoursesPage = () => {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const res = await fetch('http://localhost:8080/public/getAllCourses');
+        const res = await fetch('https://greprepcoach-service-177259961249.asia-south1.run.app/public/getAllCourses');
         console.log('Response status:', res.status);
         
         if (res.status === 204) {

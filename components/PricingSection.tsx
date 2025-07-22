@@ -28,7 +28,7 @@ const PricingSection: React.FC = () => {
       try {
         setLoading(true);
         setError(null);
-        const response = await fetch('http://localhost:8080/public/getAllCourses');
+        const response = await fetch('https://greprepcoach-service-177259961249.asia-south1.run.app/public/getAllCourses');
         if (!response.ok) throw new Error('Failed to fetch courses');
         const data = await response.json();
         setCourses(

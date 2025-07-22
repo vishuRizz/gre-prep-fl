@@ -20,7 +20,7 @@ export default function AdminLoginPage() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:8080/api/user/login", {
+      const res = await fetch("https://greprepcoach-service-177259961249.asia-south1.run.app/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email, password: formData.password }),

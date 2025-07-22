@@ -25,7 +25,7 @@ export default function AddCoursePage() {
     });
     
     try {
-      const res = await fetch('http://localhost:8080/admin/api/add-course', {
+      const res = await fetch('https://greprepcoach-service-177259961249.asia-south1.run.app/admin/api/add-course', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

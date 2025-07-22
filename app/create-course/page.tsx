@@ -28,7 +28,7 @@ export default function CreateCoursePage() {
     };
 
     try {
-      const res = await fetch('http://localhost:8080/public/createCourse', {
+      const res = await fetch('https://greprepcoach-service-177259961249.asia-south1.run.app/public/createCourse', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

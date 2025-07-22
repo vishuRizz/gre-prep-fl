@@ -13,7 +13,7 @@ export default function VerifyUserPage() {
 
   useEffect(() => {
     if (token) {
-      fetch(`http://localhost:8080/public/user/verify?token=${token}`)
+      fetch(`https://greprepcoach-service-177259961249.asia-south1.run.app/public/user/verify?token=${token}`)
         .then((res) => res.text())
         .then((data) => setMessage(data))
         .catch(() => setMessage("Verification failed"));

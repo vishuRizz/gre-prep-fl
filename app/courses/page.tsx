@@ -30,7 +30,7 @@ const CoursesPage: React.FC = () => {
       setLoading(true);
       setError(null);
 
-      const response: Response = await fetch("http://localhost:8080/public/getAllCourses");
+      const response: Response = await fetch("https://greprepcoach-service-177259961249.asia-south1.run.app/public/getAllCourses");
       if (!response.ok) {
         throw new Error(`Failed to fetch courses: ${response.status}`);
       }

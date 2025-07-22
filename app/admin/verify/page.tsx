@@ -13,7 +13,7 @@ export default function VerifyAdminPage() {
 
   useEffect(() => {
     if (token) {
-      fetch(`http://localhost:8080/admin/verify?token=${token}`)
+      fetch(`https://greprepcoach-service-177259961249.asia-south1.run.app/admin/verify?token=${token}`)
         .then((res) => res.text())
         .then((data) => {
           setMessage(data);

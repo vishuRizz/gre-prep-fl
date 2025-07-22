@@ -41,7 +41,7 @@ const UserProfile: React.FC = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) return;
-    fetch("http://localhost:8080/public/user/api/me", {
+    fetch("https://greprepcoach-service-177259961249.asia-south1.run.app/public/user/api/me", {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => res.json())
@@ -57,7 +57,7 @@ const UserProfile: React.FC = () => {
     setIsEditing(false);
     const token = localStorage.getItem("token");
     const res = await fetch(
-      "http://localhost:8080/public/user/api/update-profile",
+      "https://greprepcoach-service-177259961249.asia-south1.run.app/public/user/api/update-profile",
       {
         method: "POST",
         headers: {
