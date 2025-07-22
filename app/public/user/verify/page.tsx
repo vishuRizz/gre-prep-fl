@@ -1,8 +1,8 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 
-export default function UserVerifyPage() {
+function UserVerifyContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get('token');
   const [message, setMessage] = useState('Verifying...');
@@ -26,5 +26,20 @@ export default function UserVerifyPage() {
         <p>{message}</p>
       </div>
     </div>
+  );
+}
+
+export default function UserVerifyPage() {
+  return (
+    <Suspense fallback={
+      <div className="flex flex-col items-center justify-center min-h-screen">
+        <div className="bg-white p-8 rounded shadow text-center">
+          <h2 className="text-2xl font-bold mb-4">Email Verification</h2>
+          <p>Loading...</p>
+        </div>
+      </div>
+    }>
+      <UserVerifyContent />
+    </Suspense>
   );
 }
