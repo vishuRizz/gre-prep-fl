@@ -4,11 +4,10 @@
 export const dynamic = 'force-dynamic'; // 👈 Add this line
 export const fetchCache = "force-no-store";
 
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function VerifyUserPage() {
+function VerifyUserContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
   const [message, setMessage] = useState("Verifying...");
@@ -25,3 +24,10 @@ export default function VerifyUserPage() {
   return <div>{message}</div>;
 }
 
+export default function VerifyUserPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyUserContent />
+    </Suspense>
+  );
+}
