@@ -120,28 +120,32 @@ const Navbar: React.FC = () => {
 
           {/* Auth Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
-            <Button 
-              variant="outline" 
-              className={`transition-all duration-300 ${
-                isScrolled 
-                  ? 'border-gray-600 text-black hover:bg-gray-800 hover:text-white' 
-                  : 'border-white/30 text-black hover:bg-white/10 hover:text-white'
-              }`}
-              asChild
-            >
-              <a href="/user/auth">Login</a>
-            </Button>
-            <Button 
-              variant="outline" 
-              className={`px-6 py-2.5 text-sm rounded font-semibold transition-all duration-300 ${
-              isScrolled 
-                ? 'bg-[#7AC86B] text-white hover:bg-emerald-600 shadow-lg' 
-                : 'bg-[#7AC86B] text-white hover:bg-emerald-600'
-            }`}
-              asChild
-            >
-              <a href="/contact">Enquire Now</a>
-            </Button>
+            {!isLoggedIn && (
+              <>
+                <Button 
+                  variant="outline" 
+                  className={`transition-all duration-300 ${
+                    isScrolled 
+                      ? 'border-gray-600 text-black hover:bg-gray-800 hover:text-white' 
+                      : 'border-white/30 text-black hover:bg-white/10 hover:text-white'
+                  }`}
+                  asChild
+                >
+                  <a href="/user/auth">Login</a>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  className={`px-6 py-2.5 text-sm rounded font-semibold transition-all duration-300 ${
+                  isScrolled 
+                    ? 'bg-[#7AC86B] text-white hover:bg-emerald-600 shadow-lg' 
+                    : 'bg-[#7AC86B] text-white hover:bg-emerald-600'
+                }`}
+                  asChild
+                >
+                  <a href="/contact">Enquire Now</a>
+                </Button>
+              </>
+            )}
            
             {isLoggedIn && !isAdmin && (
               <a
@@ -155,6 +159,19 @@ const Navbar: React.FC = () => {
                 </svg>
                 Profile
               </a>
+            )}
+
+            {isLoggedIn && isAdmin && (
+              <button
+                onClick={handleLogout}
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded transition-colors flex items-center"
+                title="Logout"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-1">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
+                </svg>
+                Logout
+              </button>
             )}
         
           </div>

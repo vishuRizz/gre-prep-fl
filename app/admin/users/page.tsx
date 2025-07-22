@@ -41,7 +41,9 @@ export default function AdminUsersPage() {
           const text = await res.text();
           throw new Error(`Error ${res.status}: ${text}`);
         }
-        const data = await res.json();
+        
+        const text = await res.text();
+        const data = text ? JSON.parse(text) : [];
         setUsers(data);
         setFilteredUsers(data);
       })
