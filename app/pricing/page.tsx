@@ -29,7 +29,7 @@ const GREPricingPage: React.FC = () => {
       <Check className={`h-4 w-4 ${included ? 'text-green-500' : 'text-gray-300'}`} />
       <span className={included ? 'text-gray-700' : 'text-gray-400'}>
         {text}
-        {beta && <span className="ml-1 text-xs bg-blue-100 text-blue-600 px-1 rounded">Beta</span>}
+        {beta && <span className="ml-1 text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span>}
       </span>
     </div>
   );
@@ -85,7 +85,7 @@ const GREPricingPage: React.FC = () => {
         Pay yearly
       </button>
     </div>
-    <span className="text-sm text-blue-600 font-medium ml-4">
+    <span className="text-sm text-green-600 font-medium ml-4">
       Save up to 20% with yearly
     </span>
     <span className="text-sm text-gray-500 ml-auto hidden md:block">
@@ -161,7 +161,7 @@ const GREPricingPage: React.FC = () => {
               
               <div className="flex space-x-1 mt-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
               </div>
               
@@ -176,9 +176,9 @@ const GREPricingPage: React.FC = () => {
           </div>
 
           {/* Business Plan - Highlighted */}
-          <div className="bg-white border-2 border-blue-500 rounded-lg p-6 relative">
+          <div className="bg-white border-2 border-green-500 rounded-lg p-6 relative">
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <span className="bg-blue-600 text-white text-xs font-medium px-3 py-1 rounded-full">
+              <span className="bg-green-600 text-white text-xs font-medium px-3 py-1 rounded-full">
                 Recommended
               </span>
             </div>
@@ -194,7 +194,7 @@ const GREPricingPage: React.FC = () => {
               </p>
             </div>
             
-            <button className="w-full py-2 px-4 bg-blue-600 text-white rounded-md text-sm font-medium hover:bg-blue-700 mb-6">
+            <button className="w-full py-2 px-4 bg-[#7AC86B] text-white rounded-md text-sm font-medium hover:bg-green-700 mb-6">
               Get started
             </button>
 
@@ -210,7 +210,7 @@ const GREPricingPage: React.FC = () => {
               
               <div className="flex space-x-1 mt-2">
                 <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                 <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
@@ -225,15 +225,15 @@ const GREPricingPage: React.FC = () => {
                   <div className="text-sm text-gray-700">GRE AI included</div>
                   <div className="text-sm text-gray-700">Advanced analytics</div>
                   <div className="flex space-x-1 items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span className="text-xs text-gray-500 ml-1">Beta</span>
                     <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                   </div>
-                  <div className="text-sm text-gray-600">AI scoring assistant <span className="text-xs bg-blue-100 text-blue-600 px-1 rounded">Beta</span></div>
-                  <div className="text-sm text-gray-600">Predictive modeling <span className="text-xs bg-blue-100 text-blue-600 px-1 rounded">Beta</span></div>
+                  <div className="text-sm text-gray-600">AI scoring assistant <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
+                  <div className="text-sm text-gray-600">Predictive modeling <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
                 </div>
               </div>
             </div>
@@ -274,15 +274,15 @@ const GREPricingPage: React.FC = () => {
                   <div className="text-sm text-gray-700">GRE AI included</div>
                   <div className="text-sm text-gray-700">Enterprise analytics</div>
                   <div className="flex space-x-1 items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span className="text-xs text-gray-500 ml-1">Beta</span>
                     <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
                     <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                   </div>
-                  <div className="text-sm text-gray-600">AI coaching notes <span className="text-xs bg-blue-100 text-blue-600 px-1 rounded">Beta</span></div>
-                  <div className="text-sm text-gray-600">Advanced insights <span className="text-xs bg-blue-100 text-blue-600 px-1 rounded">Beta</span></div>
+                  <div className="text-sm text-gray-600">AI coaching notes <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
+                  <div className="text-sm text-gray-600">Advanced insights <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
                 </div>
               </div>
             </div>
@@ -302,8 +302,8 @@ const GREPricingPage: React.FC = () => {
             <div className="font-medium">Sarah Johnson</div>
             <div>Test Prep Director</div>
             <div className="flex items-center justify-center mt-2">
-              <Play className="h-4 w-4 text-blue-600 mr-1" />
-              <span className="text-blue-600">Watch video →</span>
+              <Play className="h-4 w-4 text-green-600 mr-1" />
+              <span className="text-green-600">Watch video →</span>
             </div>
           </div>
         </div>
