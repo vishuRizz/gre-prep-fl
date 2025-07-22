@@ -54,14 +54,30 @@ const Navbar: React.FC = () => {
   // Check if we're on the home page
   const isHomePage = pathname === '/';
 
+  // Get text color based on page and scroll state
+  const getTextColor = () => {
+    if (isHomePage) {
+      return 'text-white'; // Always white on home page
+    } else {
+      return isScrolled ? 'text-white' : 'text-gray-600'; // Gray when not scrolled, white when scrolled on other pages
+    }
+  };
+
+  // Get hover text color
+  const getHoverTextColor = () => {
+    if (isHomePage) {
+      return 'hover:text-emerald-400';
+    } else {
+      return isScrolled ? 'hover:text-emerald-400' : 'hover:text-emerald-600';
+    }
+  };
+
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isHomePage 
-          ? (isScrolled 
-              ? 'bg-gray-500 backdrop-blur-md border-b border-gray-500' 
-              : 'bg-transparent')
-          :'bg-gradient-to-r from-gray-500/60 to-emerald-500/30 backdrop-blur-md border-b border-gray-300 text-white'
+        isScrolled 
+          ? 'bg-gray-500 backdrop-blur-md border-b border-gray-500' 
+          : 'bg-transparent'
       }`}>
         <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
@@ -77,55 +93,35 @@ const Navbar: React.FC = () => {
                   </svg>
                 </div>
                 <div className="flex items-center">
-                  <span className={`font-bold text-lg sm:text-xl transition-colors ${isScrolled ? 'text-white' : 'text-white'}`}>Gre</span>
-                  <span className={`font-normal text-lg sm:text-xl transition-colors ${isScrolled ? 'text-white' : 'text-white'}`}>TestPrep</span>
+                  <span className={`font-bold text-lg sm:text-xl transition-colors ${isHomePage ? 'text-white' : (isScrolled ? 'text-white' : 'text-gray-700')}`}>Gre</span>
+                  <span className={`font-normal text-lg sm:text-xl transition-colors ${isHomePage ? 'text-white' : (isScrolled ? 'text-white' : 'text-gray-700')}`}>TestPrep</span>
                   <span className="ml-2 bg-[#7AC86B] text-white text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-bold">GRE</span>
                 </div>
               </a>
-              <div className={`text-xs mt-0.5 ml-8 sm:ml-10 transition-colors hidden sm:block ${isScrolled ? 'text-gray-300' : 'text-white'}`}>
+              <div className={`text-xs mt-0.5 ml-8 sm:ml-10 transition-colors hidden sm:block ${isHomePage ? 'text-white' : (isScrolled ? 'text-gray-300' : 'text-gray-500')}`}>
                 Prepare with the best. Rock the test.™
               </div>
             </div>
 
             {/* Desktop Navigation Links */}
             <div className="hidden xl:flex items-center space-x-8 lg:space-x-10">
-              <a href="#" className={`text-sm lg:text-base font-medium transition-colors ${
-                isScrolled 
-                  ? 'text-gray-200 hover:text-emerald-400' 
-                  : 'text-white hover:text-emerald-400'
-              }`}>
+              <a href="#" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
                 Plans
               </a>
-              <a href="/courses" className={`text-sm lg:text-base font-medium transition-colors ${
-                isScrolled 
-                  ? 'text-gray-200 hover:text-emerald-400' 
-                  : 'text-white hover:text-emerald-400'
-              }`}>
+              <a href="/courses" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
                 Courses
               </a>
               {isAdmin && (
-                <a href="/admin/users" className={`text-sm lg:text-base font-medium transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-200 hover:text-emerald-400' 
-                    : 'text-white hover:text-emerald-400'
-                }`}>
+                <a href="/admin/users" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
                   Users
                 </a>
               )}
               {isAdmin && (
-                <a href="/admin/add-course" className={`text-sm lg:text-base font-medium transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-200 hover:text-emerald-400' 
-                    : 'text-white hover:text-emerald-400'
-                }`}>
+                <a href="/admin/add-course" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
                   Add-course
                 </a>
               )}
-              <a href="/testimonial" className={`text-sm lg:text-base font-medium transition-colors ${
-                isScrolled 
-                  ? 'text-gray-200 hover:text-emerald-400' 
-                  : 'text-white hover:text-emerald-400'
-              }`}>
+              <a href="/testimonial" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
                 Testimonials
               </a>
             </div>
@@ -140,7 +136,10 @@ const Navbar: React.FC = () => {
                     className={`transition-all duration-300 ${
                       isScrolled 
                         ? 'border-gray-600 text-black hover:bg-gray-800 hover:text-white' 
-                        : 'border-white/30 text-black hover:bg-white/10 hover:text-white'
+                        : (isHomePage 
+                            ? 'border-white/30 text-black hover:bg-white/10 hover:text-white'
+                            : 'border-gray-400 text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                          )
                     }`}
                     asChild
                   >
@@ -148,11 +147,7 @@ const Navbar: React.FC = () => {
                   </Button>
                   <Button 
                     size="sm"
-                    className={`px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 ${
-                    isScrolled 
-                      ? 'bg-[#7AC86B] hover:bg-emerald-600 text-white shadow-lg' 
-                      : 'bg-[#7AC86B] hover:bg-emerald-600 text-white'
-                  }`}
+                    className="px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 bg-[#7AC86B] hover:bg-emerald-600 text-white"
                     asChild
                   >
                     <a href="/contact">Enquire Now</a>
@@ -164,11 +159,7 @@ const Navbar: React.FC = () => {
                 <>
                   <Button 
                     size="sm"
-                    className={`px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 ${
-                    isScrolled 
-                      ? 'bg-[#7AC86B] hover:bg-emerald-600 text-white shadow-lg' 
-                      : 'bg-[#7AC86B] hover:bg-emerald-600 text-white'
-                  }`}
+                    className="px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 bg-[#7AC86B] hover:bg-emerald-600 text-white"
                     asChild
                   >
                     <a href="/contact">Enquire Now</a>
@@ -192,11 +183,7 @@ const Navbar: React.FC = () => {
                 <>
                   <Button 
                     size="sm"
-                    className={`px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 ${
-                    isScrolled 
-                      ? 'bg-[#7AC86B] hover:bg-emerald-600 text-white shadow-lg' 
-                      : 'bg-[#7AC86B] hover:bg-emerald-600 text-white'
-                  }`}
+                    className="px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 bg-[#7AC86B] hover:bg-emerald-600 text-white"
                     asChild
                   >
                     <a href="/contact">Enquire Now</a>
@@ -220,11 +207,7 @@ const Navbar: React.FC = () => {
             <div className="xl:hidden">
               <button 
                 onClick={toggleMobileMenu}
-                className={`p-2 transition-colors ${
-                  isScrolled 
-                    ? 'text-gray-200 hover:text-emerald-400' 
-                    : 'text-white hover:text-emerald-400'
-                }`}
+                className={`p-2 transition-colors ${getTextColor()} ${getHoverTextColor()}`}
                 aria-label="Toggle mobile menu"
               >
                 {isMobileMenuOpen ? (
@@ -246,7 +229,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu Panel */}
-      <div className={`fixed top-0 left-0 z-50 h-full w-80 max-w-[85vw] bg-gradient-to-b from-gray-800 to-gray-900 shadow-2xl transform transition-transform duration-300 ease-in-out xl:hidden ${
+      <div className={`fixed top-0 left-0 z-50 h-full w-80 max-w-[85vw] bg-[#368f8b] shadow-2xl transform transition-transform duration-300 ease-in-out xl:hidden ${
         isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
       }`}>
         <div className="flex flex-col h-full">
