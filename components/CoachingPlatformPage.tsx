@@ -139,7 +139,7 @@ const GREPrepPlatform = () => {
 
                 {/* Top Floating Card */}
                 <div className="absolute top-4 md:top-8 -left-4 md:-left-6 lg:-left-12 z-30">
-                  <div className="bg-[#7AC86B] rounded-lg p-1 md:p-2 shadow-xl transform -rotate-3 hover:rotate-0 transition-all duration-1000 ease-in-out hover:scale-105">
+                  <div className=" rounded-lg p-1 md:p-2 shadow-xl transform -rotate-3 hover:rotate-0 transition-all duration-1000 ease-in-out hover:scale-105">
                     <img 
                       key={currentSection.id + '-top'}
                       src={currentSection.images.top} 

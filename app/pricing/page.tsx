@@ -1,269 +1,173 @@
 "use client";
-import React, { useState } from 'react';
-import { Check, Star, Play } from 'lucide-react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import React from 'react';
+import { Star } from 'lucide-react';
 
-const GREPricingPage: React.FC = () => {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
-
-  const logos = [
-    { name: 'Princeton', text: 'Princeton' },
-    { name: 'Kaplan', text: 'Kaplan' },
-    { name: 'Manhattan', text: 'Manhattan' },
-    { name: 'Barrons', text: "Barron's" },
-    { name: 'Magoosh', text: 'Magoosh' },
-    { name: 'ETS', text: 'ETS' }
+const TestimonialsSection: React.FC = () => {
+  const testimonials = [
+    {
+      id: 1,
+      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
+      author: "Mary Arshani",
+      position: "@Assistant manager",
+      avatar: "/api/placeholder/40/40",
+      rating: null
+    },
+    {
+      id: 2,
+      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
+      author: "Mary Arshani",
+      position: "@Assistant manager at Insureme",
+      avatar: "/api/placeholder/40/40",
+      rating: 4.8
+    },
+    {
+      id: 3,
+      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
+      author: "Mary Arshani",
+      position: "@Assistant manager",
+      avatar: "/api/placeholder/40/40",
+      rating: null
+    },
+    {
+      id: 4,
+      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
+      author: "Mary Arshani",
+      position: "@Assistant manager at Insureme",
+      avatar: "/api/placeholder/40/40",
+      rating: 4.8
+    },
+    {
+      id: 5,
+      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
+      author: "Mary Arshani",
+      position: "@Assistant manager",
+      avatar: "/api/placeholder/40/40",
+      rating: null
+    },
+    {
+      id: 6,
+      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
+      author: "Mary Arshani",
+      position: "@Assistant manager",
+      avatar: "/api/placeholder/40/40",
+      rating: null
+    }
   ];
 
-  const getPrice = (basePrice: number) => {
-    return billingCycle === 'yearly' ? Math.floor(basePrice * 0.8) : basePrice;
+  const renderStars = (rating: number) => {
+    return (
+      <div className="flex items-center space-x-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <Star
+            key={star}
+            className={`w-4 h-4 ${
+              star <= Math.floor(rating) 
+                ? 'fill-yellow-400 text-yellow-400' 
+                : 'fill-gray-300 text-gray-300'
+            }`}
+          />
+        ))}
+        <span className="ml-2 text-sm font-medium text-gray-900">{rating}</span>
+      </div>
+    );
   };
 
-  const FeatureItem: React.FC<{ text: string; included?: boolean; beta?: boolean }> = ({ 
-    text, 
-    included = true, 
-    beta = false 
+  const TestimonialCard: React.FC<{ testimonial: typeof testimonials[0]; className?: string }> = ({ 
+    testimonial, 
+    className = "" 
   }) => (
-    <div className="flex items-center space-x-2 text-sm">
-      <Check className={`h-4 w-4 ${included ? 'text-green-500' : 'text-gray-300'}`} />
-      <span className={included ? 'text-gray-700' : 'text-gray-400'}>
-        {text}
-        {beta && <span className="ml-1 text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span>}
-      </span>
+    <div className={`bg-white border border-gray-200 rounded-lg p-6 ${className}`}>
+      <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+        "{testimonial.text}"
+      </p>
+      
+      <div className="flex items-start justify-between">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
+            <div className="w-8 h-8 bg-gray-400 rounded-full"></div>
+          </div>
+          <div>
+            <div className="font-medium text-gray-900 text-sm">{testimonial.author}</div>
+            <div className="text-xs text-gray-500">{testimonial.position}</div>
+          </div>
+        </div>
+        
+        {testimonial.rating && (
+          <div className="flex-shrink-0">
+            {renderStars(testimonial.rating)}
+          </div>
+        )}
+      </div>
     </div>
   );
 
   return (
-    <div>
-      <Navbar/>
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <div className="max-w-6xl mx-auto px-4 py-16 text-center">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight hidden sm:block">
-          One tool for your GRE success.
-          <br />
-          Free for students to try.
-        </h1>
-        
-        {/* Trusted by section - Hidden on mobile */}
-        <div className="mt-12 mb-8 hidden md:block">
-          <p className="text-sm text-gray-500 mb-4">Trusted by students at</p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-            {logos.map((logo, index) => (
-              <div key={index} className="text-gray-400 font-medium text-lg">
-                {logo.text}
-              </div>
+    <div className="bg-gray-50 py-16 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">
+            TESTIMONIALS
+          </div>
+          <h2 className="text-4xl font-bold text-gray-900 leading-tight">
+            We have worked with<br />
+            thousands of amazing people
+          </h2>
+        </div>
+
+        {/* Desktop Layout - 3 columns */}
+        <div className="hidden lg:block">
+          <div className="grid grid-cols-3 gap-6">
+            {/* Column 1 */}
+            <div className="space-y-6">
+              <TestimonialCard testimonial={testimonials[0]} />
+              <TestimonialCard testimonial={testimonials[3]} />
+            </div>
+            
+            {/* Column 2 */}
+            <div className="space-y-6">
+              <TestimonialCard testimonial={testimonials[1]} />
+              <TestimonialCard testimonial={testimonials[4]} />
+            </div>
+            
+            {/* Column 3 */}
+            <div className="space-y-6">
+              <TestimonialCard testimonial={testimonials[2]} />
+              <TestimonialCard testimonial={testimonials[5]} />
+            </div>
+          </div>
+        </div>
+
+        {/* Medium Screen Layout - 2 columns */}
+        <div className="hidden md:block lg:hidden">
+          <div className="grid grid-cols-2 gap-6">
+            {/* Column 1 */}
+            <div className="space-y-6">
+              <TestimonialCard testimonial={testimonials[0]} />
+              <TestimonialCard testimonial={testimonials[2]} />
+              <TestimonialCard testimonial={testimonials[4]} />
+            </div>
+            
+            {/* Column 2 */}
+            <div className="space-y-6">
+              <TestimonialCard testimonial={testimonials[1]} />
+              <TestimonialCard testimonial={testimonials[3]} />
+              <TestimonialCard testimonial={testimonials[5]} />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout - 1 column */}
+        <div className="md:hidden">
+          <div className="space-y-6">
+            {testimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
             ))}
           </div>
         </div>
-        
-        {/* Mobile Pricing Header */}
-        <div className="md:hidden mt-8">
-          <h2 className="text-5xl font-bold text-gray-900">Pricing</h2>
-        </div>
       </div>
-
-      {/* Pricing Toggle */}
-    <div className="max-w-6xl mx-auto px-4 mb-8">
-  <div className="flex justify-center items-center space-x-1">
-    <div className="flex bg-gray-100 p-1 rounded-full">
-      <button
-        onClick={() => setBillingCycle('monthly')}
-        className={`px-4 py-2 rounded-full text-sm font-medium ${
-          billingCycle === 'monthly' ? 'bg-white text-gray-900 shadow' : 'text-gray-500'
-        }`}
-      >
-        Pay monthly
-      </button>
-      <button
-        onClick={() => setBillingCycle('yearly')}
-        className={`px-4 py-2 rounded-full text-sm font-medium ${
-          billingCycle === 'yearly' ? 'bg-white text-gray-900 shadow' : 'text-gray-500'
-        }`}
-      >
-        Pay yearly
-      </button>
-    </div>
-    <span className="text-sm text-green-600 font-medium ml-4">
-      Save up to 20% with yearly
-    </span>
-    <span className="text-sm text-gray-500 ml-auto hidden md:block">
-      Price in USD
-    </span>
-  </div>
-</div>
-
-      {/* Pricing Cards */}
-      <div className="max-w-7xl mx-auto px-4 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:gap-4">
-          
-          {/* Free Plan */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 max-w-sm mx-auto lg:max-w-none lg:mx-0">
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Free</h3>
-              <div className="mb-4">
-                <span className="text-3xl font-bold text-gray-900">$0</span>
-                <span className="text-sm text-gray-500 ml-1">per student / month</span>
-              </div>
-              <p className="text-sm text-gray-600">
-                For individual students to organize study materials and track progress.
-              </p>
-            </div>
-            
-            <button className="w-full py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 mb-6">
-              Sign up
-            </button>
-
-            <div className="space-y-3">
-              <p className="text-sm font-medium text-gray-900 mb-3">Free for individual usage</p>
-              <FeatureItem text="Basic practice tests" />
-              <FeatureItem text="Basic study plans" />
-              <FeatureItem text="Progress tracking" />
-              <FeatureItem text="Vocabulary flashcards" />
-              <FeatureItem text="Basic math review including algebra, geometry, and data analysis" />
-              
-              <div className="pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Star className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm font-medium text-gray-700">GRE AI</span>
-                </div>
-                <div className="text-sm text-gray-600 ml-6">Trial of GRE AI</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Plus Plan */}
-          <div className="bg-white border border-gray-200 rounded-lg p-6 max-w-sm mx-auto lg:max-w-none lg:mx-0">
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Plus</h3>
-              <div className="mb-4">
-                <span className="text-3xl font-bold text-gray-900">${getPrice(15)}</span>
-                <span className="text-sm text-gray-500 ml-1">per student / month</span>
-              </div>
-              <p className="text-sm text-gray-600">
-                For dedicated students and tutors to enhance preparation.
-              </p>
-            </div>
-            
-            <button className="w-full py-2 px-4 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 mb-6">
-              Get started
-            </button>
-
-            <div className="space-y-3">
-              <p className="text-sm text-gray-600 mb-3">Everything in Free</p>
-              <FeatureItem text="Unlimited practice tests" />
-              <FeatureItem text="Unlimited essay reviews" />
-              <FeatureItem text="Unlimited explanations" />
-              <FeatureItem text="Custom study plans" />
-              <FeatureItem text="Advanced analytics" />
-              <FeatureItem text="Basic tutoring sessions" />
-              
-              <div className="flex space-x-1 mt-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-              </div>
-              
-              <div className="pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Star className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm font-medium text-gray-700">GRE AI</span>
-                </div>
-                <div className="text-sm text-gray-600 ml-6">Trial of GRE AI</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Business Plan - Highlighted */}
-          <div className="bg-white border-2 border-green-500 rounded-lg p-6 relative">
-            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-              <span className="bg-green-600 text-white text-xs font-medium px-3 py-1 rounded-full">
-                Recommended
-              </span>
-            </div>
-            
-            <div className="mb-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Premium</h3>
-              <div className="mb-4">
-                <span className="text-3xl font-bold text-gray-900">${getPrice(35)}</span>
-                <span className="text-sm text-gray-500 ml-1">per student / month</span>
-              </div>
-              <p className="text-sm text-gray-600">
-                For serious test-takers to maximize their GRE scores.
-              </p>
-            </div>
-            
-            <button className="w-full py-2 px-4 bg-[#7AC86B] text-white rounded-md text-sm font-medium hover:bg-green-700 mb-6">
-              Get started
-            </button>
-
-            <div className="space-y-3">
-              <p className="text-sm text-gray-600 mb-3">Everything in Plus</p>
-              <FeatureItem text="Advanced test prep" />
-              <FeatureItem text="Personalized tutoring" />
-              <FeatureItem text="1-on-1 coaching sessions" />
-              <FeatureItem text="Advanced analytics" />
-              <FeatureItem text="Priority support" />
-              <FeatureItem text="Score guarantee" />
-              <FeatureItem text="Premium study materials" />
-              
-              <div className="flex space-x-1 mt-2">
-                <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-              </div>
-              
-              <div className="pt-4 border-t border-gray-100">
-                <div className="flex items-center space-x-2 mb-3">
-                  <Star className="h-4 w-4 text-gray-400" />
-                  <span className="text-sm font-medium text-gray-700">GRE AI</span>
-                </div>
-                <div className="space-y-2 ml-6">
-                  <div className="text-sm text-gray-700">GRE AI included</div>
-                  <div className="text-sm text-gray-700">Advanced analytics</div>
-                  <div className="flex space-x-1 items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-xs text-gray-500 ml-1">Beta</span>
-                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                  </div>
-                  <div className="text-sm text-gray-600">AI scoring assistant <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
-                  <div className="text-sm text-gray-600">Predictive modeling <span className="text-xs bg-green-100 text-green-600 px-1 rounded">Beta</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* Testimonial Section */}
-      <div className="max-w-4xl mx-auto px-4 py-16 text-center">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">ETS</h2>
-          <blockquote className="text-lg text-gray-700 italic mb-6">
-            "There's power in a single platform where you can do all your test prep out of. 
-            GREPrep is that single place."
-          </blockquote>
-          <div className="text-sm text-gray-600">
-            <div className="font-medium">Sarah Johnson</div>
-            <div>Test Prep Director</div>
-            <div className="flex items-center justify-center mt-2">
-              <Play className="h-4 w-4 text-green-600 mr-1" />
-              <span className="text-green-600">Watch video →</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <Footer/>
     </div>
   );
 };
 
-export default GREPricingPage;
+export default TestimonialsSection;

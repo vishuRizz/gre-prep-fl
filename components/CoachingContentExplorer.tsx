@@ -79,7 +79,7 @@ const CoachingContentExplorer: React.FC = () => {
 
             {/* Content */}
             <div className="p-8">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-[#7AC86B] transition-colors duration-300">
+              <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors duration-300">
                 {card.title}
               </h3>
               <p className="text-slate-600 leading-relaxed mb-6 text-sm">

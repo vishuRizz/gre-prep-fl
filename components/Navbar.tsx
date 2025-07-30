@@ -75,10 +75,10 @@ const Navbar: React.FC = () => {
   return (
     <>
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-gray-500 backdrop-blur-md border-b border-gray-500' 
-          : 'bg-transparent'
-      }`}>
+        isScrolled
+    ? 'bg-gray-200/90 backdrop-blur-md border-b border-gray-300 shadow-md'
+    : 'bg-transparent'
+}`}>
         <div className="max-w-[1450px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 sm:h-20">
             {/* Logo */}
@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
                   </svg>
                 </div>
                 <div className="flex items-center">
-                  <span className={`font-bold text-lg sm:text-xl transition-colors ${isHomePage ? 'text-white' : (isScrolled ? 'text-white' : 'text-gray-700')}`}>Gre</span>
+                  <span className={`font-bold text-xl sm:text-xl transition-colors ${isHomePage ? 'text-white' : (isScrolled ? 'text-white' : 'text-gray-700')}`}>Gre</span>
                   <span className={`font-normal text-lg sm:text-xl transition-colors ${isHomePage ? 'text-white' : (isScrolled ? 'text-white' : 'text-gray-700')}`}>TestPrep</span>
                   <span className="ml-2 bg-[#7AC86B] text-white text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-bold">GRE</span>
                 </div>
@@ -106,23 +106,54 @@ const Navbar: React.FC = () => {
             {/* Desktop Navigation Links */}
             <div className="hidden xl:flex items-center space-x-8 lg:space-x-10">
               <a href="/pricing" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
-                Plans
+                PLANS
               </a>
               <a href="/courses" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
-                Courses
+                COURSES
               </a>
+              {/* Our Locations Dropdown */}
+              <div className="relative group">
+                <button className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()} flex items-center`}>
+                  OUR LOCATIONS
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="p-4 grid grid-cols-1 gap-2 max-h-96 overflow-y-auto">
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Atlanta (Georgia)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in New York (New York)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Los Angeles (California)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in San Francisco (California)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in San Diego (California)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Jacksonville (Florida)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Philadelphia (Pennsylvania)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Miami (Florida)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Seattle (Washington)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Dallas (Texas)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Virginia Beach City (Virginia)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Chicago (Illinois)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Charlotte (North Carolina)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Austin (Texas)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Houston (Texas)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Boston (Massachusetts)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Newark (New Jersey)</a>
+                    <a href="#" className="text-sm text-gray-700 hover:text-[#7AC86B] hover:bg-gray-50 px-3 py-2 rounded transition-colors">GRE Prep in Detroit (Michigan)</a>
+                  </div>
+                </div>
+              </div>
               {isAdmin && (
                 <a href="/admin/users" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
-                  Users
+                  USERS
                 </a>
               )}
               {isAdmin && (
                 <a href="/admin/add-course" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
-                  Add-course
+                  ADD-COURSE
                 </a>
               )}
               <a href="/testimonial" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
-                Testimonials
+                TESTIMONIALS
               </a>
             </div>
 
@@ -143,14 +174,14 @@ const Navbar: React.FC = () => {
                     }`}
                     asChild
                   >
-                    <a href="/user/auth">Login</a>
+                    <a href="/user/auth">LOGIN</a>
                   </Button>
                   <Button 
                     size="sm"
                     className="px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 bg-[#7AC86B] hover:bg-emerald-600 text-white"
                     asChild
                   >
-                    <a href="/contact">Enquire Now</a>
+                    <a href="/contact">Try for Free</a>
                   </Button>
                 </>
               )}
@@ -162,7 +193,7 @@ const Navbar: React.FC = () => {
                     className="px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 bg-[#7AC86B] hover:bg-emerald-600 text-white"
                     asChild
                   >
-                    <a href="/contact">Enquire Now</a>
+                    <a href="/contact">Try for Free</a>
                   </Button>
                   <Button
                     variant="default"
@@ -186,7 +217,7 @@ const Navbar: React.FC = () => {
                     className="px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 bg-[#7AC86B] hover:bg-emerald-600 text-white"
                     asChild
                   >
-                    <a href="/contact">Enquire Now</a>
+                    <a href="/contact">Try for Free</a>
                   </Button>
                   <Button
                     variant="destructive"
@@ -266,22 +297,55 @@ const Navbar: React.FC = () => {
                 className="block px-4 py-3 text-white hover:bg-gray-700 rounded-lg transition-colors font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Plans
+                PLANS
               </a>
               <a 
                 href="/courses" 
                 className="block px-4 py-3 text-white hover:bg-gray-700 rounded-lg transition-colors font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Courses
+                COURSES
               </a>
+              {/* Mobile Our Locations - Expandable */}
+              <div className="block">
+                <details className="group">
+                  <summary className="block px-4 py-3 text-white hover:bg-gray-700 rounded-lg transition-colors font-medium cursor-pointer list-none">
+                    <div className="flex items-center justify-between">
+                      OUR LOCATIONS
+                      <svg className="w-4 h-4 transition-transform group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
+                  </summary>
+                  <div className="mt-2 pl-4 space-y-1 max-h-60 overflow-y-auto">
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Atlanta (Georgia)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in New York (New York)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Los Angeles (California)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in San Francisco (California)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in San Diego (California)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Jacksonville (Florida)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Philadelphia (Pennsylvania)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Miami (Florida)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Seattle (Washington)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Dallas (Texas)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Virginia Beach City (Virginia)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Chicago (Illinois)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Charlotte (North Carolina)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Austin (Texas)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Houston (Texas)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Boston (Massachusetts)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Newark (New Jersey)</a>
+                    <a href="#" className="block px-4 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-600 rounded transition-colors" onClick={() => setIsMobileMenuOpen(false)}>GRE Prep in Detroit (Michigan)</a>
+                  </div>
+                </details>
+              </div>
               {isAdmin && (
                 <a 
                   href="/admin/users" 
                   className="block px-4 py-3 text-white hover:bg-gray-700 rounded-lg transition-colors font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Users
+                  USERS
                 </a>
               )}
               {isAdmin && (
@@ -290,7 +354,7 @@ const Navbar: React.FC = () => {
                   className="block px-4 py-3 text-white hover:bg-gray-700 rounded-lg transition-colors font-medium"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Add Course
+                  ADD COURSE
                 </a>
               )}
               <a 
@@ -298,7 +362,7 @@ const Navbar: React.FC = () => {
                 className="block px-4 py-3 text-white hover:bg-gray-700 rounded-lg transition-colors font-medium"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Testimonials
+                TESTIMONIALS
               </a>
             </div>
 
@@ -317,7 +381,7 @@ const Navbar: React.FC = () => {
                     asChild
                   >
                     <a href="/user/auth" onClick={() => setIsMobileMenuOpen(false)}>
-                      Login
+                      LOGIN
                     </a>
                   </Button>
                   <Button 
@@ -325,7 +389,7 @@ const Navbar: React.FC = () => {
                     asChild
                   >
                     <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      Enquire Now
+                      Try for Free
                     </a>
                   </Button>
                 </>
@@ -338,7 +402,7 @@ const Navbar: React.FC = () => {
                     asChild
                   >
                     <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      Enquire Now
+                      Try for Free
                     </a>
                   </Button>
                   <Button
@@ -350,7 +414,7 @@ const Navbar: React.FC = () => {
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a8.25 8.25 0 1115 0v.75a.75.75 0 01-.75.75h-13.5a.75.75 0 01-.75-.75v-.75z" />
                       </svg>
-                      Profile
+                      PROFILE
                     </a>
                   </Button>
                 </>
@@ -363,7 +427,7 @@ const Navbar: React.FC = () => {
                     asChild
                   >
                     <a href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
-                      Enquire Now
+                      Try for Free
                     </a>
                   </Button>
                   <Button
@@ -374,7 +438,7 @@ const Navbar: React.FC = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4 mr-2">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75" />
                     </svg>
-                    Logout
+                    LOGOUT
                   </Button>
                 </>
               )}

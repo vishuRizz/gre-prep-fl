@@ -9,7 +9,7 @@ import TTPTestimonialSection from '../components/TTPTestimonialSection';
 import Footer from '../components/Footer';
 import HeroSection from '@/components/HeroSection';
 import BusinessSchoolsCarousel from '@/components/BusinessSchoolsCarousel';
-import GREPricingTable from '@/components/ComparisionTable';
+
 import CoachingPlatformPage from '@/components/CoachingPlatformPage';
 export default function Home() {
   return (
@@ -23,7 +23,7 @@ export default function Home() {
     <CoachingContentExplorer/>
     <TTPTestimonialSection/>
     <BusinessSchoolsCarousel/>
-    <GREPricingTable/>
+
     <Footer/>
     {/* <ComparisonTable/> */}
   </div>
