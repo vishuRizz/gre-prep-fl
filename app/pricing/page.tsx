@@ -1,173 +1,217 @@
 "use client";
 import React from 'react';
-import { Star } from 'lucide-react';
+import { Check, User, Users, Building2, ArrowRight } from 'lucide-react';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-const TestimonialsSection: React.FC = () => {
-  const testimonials = [
+interface PlanFeature {
+  text: string;
+  included: boolean;
+}
+
+interface Plan {
+  name: string;
+  description: string;
+  userType: string;
+  userCount: string;
+  price: string;
+  billing: string;
+  buttonText: string;
+  buttonAction: 'subscription' | 'demo';
+  features: PlanFeature[];
+  icon: React.ReactNode;
+  highlighted?: boolean;
+}
+
+const GRECoursesPage: React.FC = () => {
+  const plans: Plan[] = [
     {
-      id: 1,
-      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
-      author: "Mary Arshani",
-      position: "@Assistant manager",
-      avatar: "/api/placeholder/40/40",
-      rating: null
+      name: "Personal Plan",
+      description: "For you",
+      userType: "Individual",
+      userCount: "1 student",
+      price: "₹2,500 per month",
+      billing: "Billed monthly or annually. Cancel anytime.",
+      buttonText: "Start subscription",
+      buttonAction: "subscription",
+      icon: <User className="w-5 h-5" />,
+      features: [
+        { text: "Access to 50+ GRE practice tests", included: true },
+        { text: "Verbal and Quantitative prep modules", included: true },
+        { text: "Personalized study recommendations", included: true },
+        { text: "AI-powered question analysis", included: true },
+        { text: "Performance tracking dashboard", included: true },
+        { text: "Mobile app access", included: true }
+      ]
     },
     {
-      id: 2,
-      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
-      author: "Mary Arshani",
-      position: "@Assistant manager at Insureme",
-      avatar: "/api/placeholder/40/40",
-      rating: 4.8
+      name: "Team Plan",
+      description: "For your team",
+      userType: "Small Groups",
+      userCount: "2 to 10 students",
+      price: "₹1,800 per month per user",
+      billing: "Billed annually. Cancel anytime.",
+      buttonText: "Start subscription",
+      buttonAction: "subscription",
+      icon: <Users className="w-5 h-5" />,
+      highlighted: true,
+      features: [
+        { text: "Access to 75+ GRE practice tests", included: true },
+        { text: "Verbal and Quantitative prep modules", included: true },
+        { text: "Personalized study recommendations", included: true },
+        { text: "AI-powered question analysis", included: true },
+        { text: "Group progress analytics and reports", included: true },
+        { text: "Collaborative study features", included: true },
+        { text: "Priority email support", included: true }
+      ]
     },
     {
-      id: 3,
-      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
-      author: "Mary Arshani",
-      position: "@Assistant manager",
-      avatar: "/api/placeholder/40/40",
-      rating: null
-    },
-    {
-      id: 4,
-      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
-      author: "Mary Arshani",
-      position: "@Assistant manager at Insureme",
-      avatar: "/api/placeholder/40/40",
-      rating: 4.8
-    },
-    {
-      id: 5,
-      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
-      author: "Mary Arshani",
-      position: "@Assistant manager",
-      avatar: "/api/placeholder/40/40",
-      rating: null
-    },
-    {
-      id: 6,
-      text: "DIGIS has transformed the way we approach insurance and financial services. With its seamless user interface and innovative features, it has made managing policies and investments effortless. The intuitive design allows for quick access to all essential tools, and the support team is always responsive and helpful. I highly recommend DIGIS for anyone looking for a reliable and user-friendly solution in the insurtech and fintech space!",
-      author: "Mary Arshani",
-      position: "@Assistant manager",
-      avatar: "/api/placeholder/40/40",
-      rating: null
+      name: "Enterprise Plan",
+      description: "For your whole organization",
+      userType: "Large Organizations",
+      userCount: "More than 10 students",
+      price: "Contact sales for pricing",
+      billing: "",
+      buttonText: "Request a demo",
+      buttonAction: "demo",
+      icon: <Building2 className="w-5 h-5" />,
+      features: [
+        { text: "Access to 100+ GRE practice tests", included: true },
+        { text: "Verbal and Quantitative prep modules", included: true },
+        { text: "Personalized study recommendations", included: true },
+        { text: "AI-powered question analysis", included: true },
+        { text: "Advanced analytics and insights", included: true },
+        { text: "Dedicated customer success manager", included: true },
+        { text: "Custom content and branding", included: true },
+        { text: "Integration with LMS platforms", included: true },
+        { text: "On-site training sessions with add-on", included: true },
+        { text: "24/7 priority support", included: true }
+      ]
     }
   ];
 
-  const renderStars = (rating: number) => {
-    return (
-      <div className="flex items-center space-x-1">
-        {[1, 2, 3, 4, 5].map((star) => (
-          <Star
-            key={star}
-            className={`w-4 h-4 ${
-              star <= Math.floor(rating) 
-                ? 'fill-yellow-400 text-yellow-400' 
-                : 'fill-gray-300 text-gray-300'
-            }`}
-          />
-        ))}
-        <span className="ml-2 text-sm font-medium text-gray-900">{rating}</span>
-      </div>
-    );
-  };
+  return (
+    <div>
+      <Navbar/>
 
-  const TestimonialCard: React.FC<{ testimonial: typeof testimonials[0]; className?: string }> = ({ 
-    testimonial, 
-    className = "" 
-  }) => (
-    <div className={`bg-white border border-gray-200 rounded-lg p-6 ${className}`}>
-      <p className="text-sm text-gray-600 mb-6 leading-relaxed">
-        "{testimonial.text}"
-      </p>
+    <div className="min-h-screen bg-white py-12 pt-24 px-4">
+      <div className="max-w-8xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-black mb-4">
+            Choose a plan for success
+          </h1>
+          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
+            Don't want to buy courses one by one? Pick a plan to help you, your team, or your organization achieve GRE success faster.
+          </p>
+        </div>
+
+        {/* Plans Grid */}
+        <div className="grid lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+          {plans.map((plan, index) => (
+            <div
+              key={index}
+              className={`relative bg-white border-2 rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl ${
+                plan.highlighted 
+                  ? 'border-green-500 shadow-lg' 
+                  : 'border-gray-200 hover:border-gray-300'
+              }`}
+            >
+              {/* Popular Badge */}
+              {plan.highlighted && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                    Most Popular
+                  </div>
+                </div>
+              )}
+
+              {/* Plan Header */}
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-black mb-2">{plan.name}</h3>
+                <p className="text-gray-600 mb-3">{plan.description}</p>
+                
+                <div className="flex items-center text-gray-500 mb-4">
+                  {plan.icon}
+                  <span className="ml-2">{plan.userCount}</span>
+                </div>
+
+                <div className="mb-4">
+                  <div className="text-2xl font-bold text-black mb-1">
+                    {plan.price}
+                  </div>
+                  {plan.billing && (
+                    <p className="text-sm text-gray-500">{plan.billing}</p>
+                  )}
+                </div>
+
+                <button
+                  className={`w-full py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center group ${
+                    plan.highlighted
+                      ? 'bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl'
+                      : 'bg-black hover:bg-gray-800 text-white'
+                  }`}
+                >
+                  {plan.buttonText}
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
+
+              {/* Features List */}
+              <div className="space-y-3">
+                {plan.features.map((feature, featureIndex) => (
+                  <div key={featureIndex} className="flex items-start">
+                    <div className="flex-shrink-0 mt-0.5">
+                      <Check className="w-4 h-4 text-green-500" />
+                    </div>
+                    <span className="ml-3 text-gray-700 text-sm leading-relaxed">
+                      {feature.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       
-      <div className="flex items-start justify-between">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center">
-            <div className="w-8 h-8 bg-gray-400 rounded-full"></div>
-          </div>
-          <div>
-            <div className="font-medium text-gray-900 text-sm">{testimonial.author}</div>
-            <div className="text-xs text-gray-500">{testimonial.position}</div>
+
+        {/* FAQ Section */}
+        <div className="mt-12 max-w-5xl mx-auto">
+          <h3 className="text-2xl font-bold text-black text-center mb-6">
+            Frequently Asked Questions
+          </h3>
+          <div className="space-y-4">
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <h4 className="text-base font-semibold text-black mb-2">
+                Can I switch plans anytime?
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <h4 className="text-base font-semibold text-black mb-2">
+                Is there a free trial available?
+              </h4>
+              <p className="text-gray-600 text-sm">
+                We offer a 7-day free trial for all plans so you can experience our GRE prep platform before committing.
+              </p>
+            </div>
+            <div className="bg-white border border-gray-200 rounded-xl p-5">
+              <h4 className="text-base font-semibold text-black mb-2">
+                What payment methods do you accept?
+              </h4>
+              <p className="text-gray-600 text-sm">
+                We accept all major credit cards, debit cards, UPI, and net banking for Indian customers.
+              </p>
+            </div>
           </div>
         </div>
-        
-        {testimonial.rating && (
-          <div className="flex-shrink-0">
-            {renderStars(testimonial.rating)}
-          </div>
-        )}
       </div>
     </div>
-  );
-
-  return (
-    <div className="bg-gray-50 py-16 px-4">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-12">
-          <div className="text-sm font-medium text-blue-600 mb-2 tracking-wide uppercase">
-            TESTIMONIALS
-          </div>
-          <h2 className="text-4xl font-bold text-gray-900 leading-tight">
-            We have worked with<br />
-            thousands of amazing people
-          </h2>
-        </div>
-
-        {/* Desktop Layout - 3 columns */}
-        <div className="hidden lg:block">
-          <div className="grid grid-cols-3 gap-6">
-            {/* Column 1 */}
-            <div className="space-y-6">
-              <TestimonialCard testimonial={testimonials[0]} />
-              <TestimonialCard testimonial={testimonials[3]} />
-            </div>
-            
-            {/* Column 2 */}
-            <div className="space-y-6">
-              <TestimonialCard testimonial={testimonials[1]} />
-              <TestimonialCard testimonial={testimonials[4]} />
-            </div>
-            
-            {/* Column 3 */}
-            <div className="space-y-6">
-              <TestimonialCard testimonial={testimonials[2]} />
-              <TestimonialCard testimonial={testimonials[5]} />
-            </div>
-          </div>
-        </div>
-
-        {/* Medium Screen Layout - 2 columns */}
-        <div className="hidden md:block lg:hidden">
-          <div className="grid grid-cols-2 gap-6">
-            {/* Column 1 */}
-            <div className="space-y-6">
-              <TestimonialCard testimonial={testimonials[0]} />
-              <TestimonialCard testimonial={testimonials[2]} />
-              <TestimonialCard testimonial={testimonials[4]} />
-            </div>
-            
-            {/* Column 2 */}
-            <div className="space-y-6">
-              <TestimonialCard testimonial={testimonials[1]} />
-              <TestimonialCard testimonial={testimonials[3]} />
-              <TestimonialCard testimonial={testimonials[5]} />
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Layout - 1 column */}
-        <div className="md:hidden">
-          <div className="space-y-6">
-            {testimonials.map((testimonial) => (
-              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-            ))}
-          </div>
-        </div>
-      </div>
+    <Footer/>
     </div>
   );
 };
 
-export default TestimonialsSection;
+export default GRECoursesPage;

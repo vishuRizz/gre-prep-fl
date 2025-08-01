@@ -161,7 +161,7 @@ const Navbar: React.FC = () => {
             <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
               {!isLoggedIn && (
                 <>
-                  <Button 
+                  {/* <Button 
                     variant="outline" 
                     size="sm"
                     className={`transition-all duration-300 ${
@@ -175,7 +175,7 @@ const Navbar: React.FC = () => {
                     asChild
                   >
                     <a href="/user/auth">LOGIN</a>
-                  </Button>
+                  </Button> */}
                   <Button 
                     size="sm"
                     className="px-4 lg:px-6 py-2 text-sm font-semibold transition-all duration-300 bg-[#7AC86B] hover:bg-emerald-600 text-white"
@@ -375,7 +375,7 @@ const Navbar: React.FC = () => {
             <div className="px-4 space-y-3">
               {!isLoggedIn && (
                 <>
-                  <Button 
+                  {/* <Button 
                     variant="outline" 
                     className="w-full bg-transparent border-gray-600 text-white hover:bg-gray-700"
                     asChild
@@ -383,7 +383,7 @@ const Navbar: React.FC = () => {
                     <a href="/user/auth" onClick={() => setIsMobileMenuOpen(false)}>
                       LOGIN
                     </a>
-                  </Button>
+                  </Button> */}
                   <Button 
                     className="w-full bg-[#7AC86B] hover:bg-emerald-600 text-white"
                     asChild
