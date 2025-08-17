@@ -1,217 +1,255 @@
 "use client";
-import React from 'react';
-import { Check, User, Users, Building2, ArrowRight } from 'lucide-react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import Navbar from '@/components/Navbar';
+import React, { useState } from 'react';
 
-interface PlanFeature {
-  text: string;
-  included: boolean;
-}
-
-interface Plan {
-  name: string;
-  description: string;
-  userType: string;
-  userCount: string;
+interface PricingCardProps {
+  title: string;
   price: string;
-  billing: string;
-  buttonText: string;
-  buttonAction: 'subscription' | 'demo';
-  features: PlanFeature[];
-  icon: React.ReactNode;
-  highlighted?: boolean;
+  hours: string;
+  features: string[];
+  isHighlighted?: boolean;
+  hasPaymentPlans?: boolean;
 }
 
-const GRECoursesPage: React.FC = () => {
-  const plans: Plan[] = [
+const PricingCard: React.FC<PricingCardProps> = ({ 
+  title, 
+  price, 
+  hours, 
+  features, 
+  isHighlighted = false, // Gold Package will have this as true
+  hasPaymentPlans = false // Silver, Gold, Diamond packages have payment plans
+}) => {
+  const [isBuyNowHovered, setIsBuyNowHovered] = useState(false);
+
+  return (
+    <div className={`
+      group relative flex flex-col h-full p-6 rounded-lg overflow-hidden
+      ${isHighlighted 
+        ? 'bg-emerald-400 hover:bg-[#7AC86B] transform scale-105 shadow-2xl'  // Gold Package: Gray background, turns green on hover
+        : 'bg-white shadow-xl hover:shadow-2xl'                            // Regular Cards: White background, hover shadow effect
+      }
+      ${isHighlighted ? 'lg:scale-110' : 'hover:scale-102'}        // Desktop scaling: Gold stays larger, others scale slightly on hover
+      transition-all duration-500 cursor-pointer                   // Smooth transitions for all effects with longer duration
+    `}>
+      {/* Header Section - Package title, price, and hours */}
+      <div className="text-center mb-6">
+        {/* Package Title - White text for Gold Package, dark for others */}
+        <h3 className={`
+          text-lg font-bold mb-3 uppercase tracking-wide transition-colors duration-500
+          ${isHighlighted ? 'text-gray-900 group-hover:text-white' : 'text-gray-900'}
+        `}>
+          {title}
+        </h3>
+        
+        {/* Package Price - Large prominent display */}
+        <div className={`
+          text-4xl font-bold mb-2 transition-colors duration-500
+          ${isHighlighted ? 'text-gray-900 group-hover:text-white' : 'text-gray-900'}
+        `}>
+          {price}
+        </div>
+        
+        {/* Hours Information - Green accent for regular cards, white for Gold */}
+        <div className={`
+          text-base font-medium transition-colors duration-500
+          ${isHighlighted ? 'text-gray-700 group-hover:text-white' : 'text-green-600'}
+        `}>
+          {hours}
+        </div>
+      </div>
+
+      {/* Features List - Package benefits with bullet points */}
+      <div className="flex-grow space-y-3 min-h-0">
+        {/* Map through each feature and display with triangle bullet points */}
+        {features.map((feature, index) => (
+          <div key={index} className="flex items-start">
+            {/* Triangle Bullet Point - Green for regular cards, white for Gold */}
+            <div className={`
+              w-0 h-0 mr-3 mt-2 flex-shrink-0 transition-colors duration-500
+              border-l-[5px] border-r-[5px] border-b-[7px]
+              border-l-transparent border-r-transparent
+              ${isHighlighted ? 'border-b-gray-600 group-hover:border-b-white' : 'border-b-green-500'}
+            `}></div>
+            
+            {/* Feature Text - Responsive text that wraps properly */}
+            <p className={`
+              text-sm leading-relaxed break-words transition-colors duration-500
+              ${isHighlighted ? 'text-gray-700 group-hover:text-white' : 'text-gray-700'}
+            `}>
+              {feature}
+            </p>
+          </div>
+        ))}
+        
+        {/* Payment Plans Feature - Only shows for Silver, Gold, Diamond packages */}
+        {hasPaymentPlans && (
+          <div className="flex items-start">
+            {/* Triangle Bullet Point for Payment Plans */}
+            <div className={`
+              w-0 h-0 mr-3 mt-2 flex-shrink-0 transition-colors duration-500
+              border-l-[5px] border-r-[5px] border-b-[7px]
+              border-l-transparent border-r-transparent
+              ${isHighlighted ? 'border-b-gray-600 group-hover:border-b-white' : 'border-b-green-500'}
+            `}></div>
+            
+            {/* Payment Plans Text */}
+            <p className={`
+              text-sm leading-relaxed break-words transition-colors duration-500
+              ${isHighlighted ? 'text-gray-700 group-hover:text-white' : 'text-gray-700'}
+            `}>
+              With 2 Types of Payment Plans
+            </p>
+          </div>
+        )}
+      </div>
+
+      {/* Buttons - Enhanced with click animations */}
+      <div className="mt-6 space-y-3 flex-shrink-0">
+        {/* Try Free Session Button - Different styling for each card type */}
+        <button className={`
+          w-full font-bold py-3 px-4 rounded-lg transition-all duration-500 uppercase tracking-wide flex items-center justify-center text-sm
+          transform active:scale-95 active:bg-black active:text-white
+          ${isBuyNowHovered 
+            ? 'bg-gray-200 text-gray-800'  // When Buy Now is hovered, Try Free Session goes to original state
+            : 'bg-gray-200 text-gray-800 group-hover:bg-black group-hover:text-white'  // Normal behavior
+          } hover:shadow-lg
+        `}>
+          Try Free Session
+          {/* Arrow icon - Shows when card is hovered but hides when Buy Now is hovered */}
+          <svg className={`ml-2 w-4 h-4 flex-shrink-0 transition-all duration-500 ${
+            isBuyNowHovered 
+              ? 'opacity-0 transform -translate-x-2'  // Hide when Buy Now is hovered
+              : 'opacity-0 transform -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0'  // Show on card hover
+          }`} fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
+        
+        {/* Buy Now Button - Different styling for each card type */}
+        <button 
+          className={`
+            w-full font-bold py-3 px-4 rounded-lg transition-all duration-500 uppercase tracking-wide text-sm flex items-center justify-center
+            transform active:scale-95 active:bg-black active:text-white
+            bg-gray-200 text-gray-800 hover:bg-black hover:text-white hover:shadow-lg
+          `}
+          onMouseEnter={() => setIsBuyNowHovered(true)}
+          onMouseLeave={() => setIsBuyNowHovered(false)}
+        >
+          Buy Now
+          {/* Arrow icon - Shows with smooth animation when Buy Now button is hovered */}
+          <svg className={`ml-2 w-4 h-4 flex-shrink-0 transition-all duration-500 ${
+            isBuyNowHovered 
+              ? 'opacity-100 transform translate-x-0'  // Show arrow when Buy Now is hovered
+              : 'opacity-0 transform -translate-x-2'   // Hide arrow by default
+          }`} fill="currentColor" viewBox="0 0 20 20">
+            <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const GMATPricingPage: React.FC = () => {
+  const pricingData = [
     {
-      name: "Personal Plan",
-      description: "For you",
-      userType: "Individual",
-      userCount: "1 student",
-      price: "₹2,500 per month",
-      billing: "Billed monthly or annually. Cancel anytime.",
-      buttonText: "Start subscription",
-      buttonAction: "subscription",
-      icon: <User className="w-5 h-5" />,
+      title: "Basic Package",
+      price: "$899",
+      hours: "(10 Hours)",
       features: [
-        { text: "Access to 50+ GRE practice tests", included: true },
-        { text: "Verbal and Quantitative prep modules", included: true },
-        { text: "Personalized study recommendations", included: true },
-        { text: "AI-powered question analysis", included: true },
-        { text: "Performance tracking dashboard", included: true },
-        { text: "Mobile app access", included: true }
+        "10 Hours of Personalized One-on-One Tutoring",
+        "GMAT Official Guide 2021 Book",
+        "Unlimited Tutor support by E-mail, Phone & Online Meetings all through your Test Date",
+        '200 "Master-Level GMAT Questions" with Solutions ($99 Value)',
+        "Thorough Review of 1 Practice Test",
+        "FREE Trial Session # 1 (1 Hour) to Discuss & Prepare a Personalized Action Plan and Strategy"
       ]
     },
     {
-      name: "Team Plan",
-      description: "For your team",
-      userType: "Small Groups",
-      userCount: "2 to 10 students",
-      price: "₹1,800 per month per user",
-      billing: "Billed annually. Cancel anytime.",
-      buttonText: "Start subscription",
-      buttonAction: "subscription",
-      icon: <Users className="w-5 h-5" />,
-      highlighted: true,
+      title: "Silver Package",
+      price: "$1,299",
+      hours: "(15 Hours)",
       features: [
-        { text: "Access to 75+ GRE practice tests", included: true },
-        { text: "Verbal and Quantitative prep modules", included: true },
-        { text: "Personalized study recommendations", included: true },
-        { text: "AI-powered question analysis", included: true },
-        { text: "Group progress analytics and reports", included: true },
-        { text: "Collaborative study features", included: true },
-        { text: "Priority email support", included: true }
-      ]
+        "15 Hours of Personalized One-on-One Tutoring",
+        "GMAT Official Guide 2021 Book",
+        "Unlimited Tutor support by E-mail, Phone & Online Meetings all through your Test Date",
+        '300 "Master-Level GMAT Questions" with Solutions ($149 Value)',
+        "Thorough Review of 2 Practice Tests",
+        "FREE Trial Session # 1 (1.5 Hour) to Discuss & Prepare a Personalized Action Plan and Strategy"
+      ],
+      hasPaymentPlans: true
     },
     {
-      name: "Enterprise Plan",
-      description: "For your whole organization",
-      userType: "Large Organizations",
-      userCount: "More than 10 students",
-      price: "Contact sales for pricing",
-      billing: "",
-      buttonText: "Request a demo",
-      buttonAction: "demo",
-      icon: <Building2 className="w-5 h-5" />,
+      title: "Gold Package",
+      price: "$1,699",
+      hours: "(20 Hours)",
       features: [
-        { text: "Access to 100+ GRE practice tests", included: true },
-        { text: "Verbal and Quantitative prep modules", included: true },
-        { text: "Personalized study recommendations", included: true },
-        { text: "AI-powered question analysis", included: true },
-        { text: "Advanced analytics and insights", included: true },
-        { text: "Dedicated customer success manager", included: true },
-        { text: "Custom content and branding", included: true },
-        { text: "Integration with LMS platforms", included: true },
-        { text: "On-site training sessions with add-on", included: true },
-        { text: "24/7 priority support", included: true }
-      ]
+        "20 Hours of Personalized One-on-One Tutoring",
+        "GMAT Official Guide 2021 Book",
+        "Unlimited Tutor support by E-mail, Phone & Online Meetings all through your Test Date",
+        '400 "Master-Level GMAT Questions" with Solutions ($199 Value)',
+        "Thorough Review of 3 Practice Tests",
+        "FREE Trial Session # 1 (1.5 Hour) to Discuss & Prepare a Personalized Action Plan and Strategy"
+      ],
+      isHighlighted: true,
+      hasPaymentPlans: true
+    },
+    {
+      title: "Diamond Package",
+      price: "$1,999",
+      hours: "(25 Hours)",
+      features: [
+        "25 Hours of Personalized One-on-One Tutoring",
+        "GMAT Official Guide 2021 Book",
+        "Unlimited Tutor support by E-mail, Phone & Online Meetings all through your Test Date",
+        '500 "Master-Level GMAT Questions" with Solutions ($249 Value)',
+        "Thorough Review of 4/5 Practice Tests",
+        "FREE Trial Session # 1 (1.5 Hour) to Discuss & Prepare a Personalized Action Plan and Strategy"
+      ],
+      hasPaymentPlans: true
     }
   ];
 
   return (
     <div>
       <Navbar/>
-
-    <div className="min-h-screen bg-white py-12 pt-24 px-4">
-      <div className="max-w-8xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-black mb-4">
-            Choose a plan for success
-          </h1>
-          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
-            Don't want to buy courses one by one? Pick a plan to help you, your team, or your organization achieve GRE success faster.
-          </p>
-        </div>
-
-        {/* Plans Grid */}
-        <div className="grid lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
-          {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`relative bg-white border-2 rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl ${
-                plan.highlighted 
-                  ? 'border-green-500 shadow-lg' 
-                  : 'border-gray-200 hover:border-gray-300'
-              }`}
+      <Header/>
+    <div className="min-h-screen bg-gray-50 py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header Text */}
+       
+        
+        {/* Cards Container - Tight spacing for seamless look */}
+        <div className="flex flex-col lg:flex-row justify-center items-stretch gap-2 lg:gap-1">
+          {/* Map through pricing data and create cards */}
+          {pricingData.map((pkg, index) => (
+            <div 
+              key={index} 
+              className={`
+                ${index === 2 ? 'lg:flex-[1.1] lg:z-10' : 'lg:flex-[1.05]'}  // Gold Package (index 2) gets more width and higher z-index
+                flex-1 max-w-sm lg:max-w-none                                   // Responsive width handling
+                ${index === 2 ? 'lg:mx-1' : ''}                                // Gold Package gets horizontal margins for spacing
+              `}
             >
-              {/* Popular Badge */}
-              {plan.highlighted && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <div className="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-                    Most Popular
-                  </div>
-                </div>
-              )}
-
-              {/* Plan Header */}
-              <div className="mb-6">
-                <h3 className="text-xl font-bold text-black mb-2">{plan.name}</h3>
-                <p className="text-gray-600 mb-3">{plan.description}</p>
-                
-                <div className="flex items-center text-gray-500 mb-4">
-                  {plan.icon}
-                  <span className="ml-2">{plan.userCount}</span>
-                </div>
-
-                <div className="mb-4">
-                  <div className="text-2xl font-bold text-black mb-1">
-                    {plan.price}
-                  </div>
-                  {plan.billing && (
-                    <p className="text-sm text-gray-500">{plan.billing}</p>
-                  )}
-                </div>
-
-                <button
-                  className={`w-full py-3 px-6 rounded-xl font-semibold text-base transition-all duration-300 flex items-center justify-center group ${
-                    plan.highlighted
-                      ? 'bg-green-500 hover:bg-green-600 text-white shadow-lg hover:shadow-xl'
-                      : 'bg-black hover:bg-gray-800 text-white'
-                  }`}
-                >
-                  {plan.buttonText}
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-
-              {/* Features List */}
-              <div className="space-y-3">
-                {plan.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-start">
-                    <div className="flex-shrink-0 mt-0.5">
-                      <Check className="w-4 h-4 text-green-500" />
-                    </div>
-                    <span className="ml-3 text-gray-700 text-sm leading-relaxed">
-                      {feature.text}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {/* Render individual pricing card */}
+              <PricingCard
+                title={pkg.title}           // Package name (Basic, Silver, Gold, Diamond)
+                price={pkg.price}           // Package price ($899, $1,299, etc.)
+                hours={pkg.hours}           // Hours included ((10 Hours), (15 Hours), etc.)
+                features={pkg.features}     // Array of package features
+                isHighlighted={pkg.isHighlighted}  // true for Gold Package only
+                hasPaymentPlans={pkg.hasPaymentPlans} // true for Silver, Gold, Diamond
+              />
             </div>
           ))}
-        </div>
-      
-
-        {/* FAQ Section */}
-        <div className="mt-12 max-w-5xl mx-auto">
-          <h3 className="text-2xl font-bold text-black text-center mb-6">
-            Frequently Asked Questions
-          </h3>
-          <div className="space-y-4">
-            <div className="bg-white border border-gray-200 rounded-xl p-5">
-              <h4 className="text-base font-semibold text-black mb-2">
-                Can I switch plans anytime?
-              </h4>
-              <p className="text-gray-600 text-sm">
-                Yes, you can upgrade or downgrade your plan at any time. Changes will be reflected in your next billing cycle.
-              </p>
-            </div>
-            <div className="bg-white border border-gray-200 rounded-xl p-5">
-              <h4 className="text-base font-semibold text-black mb-2">
-                Is there a free trial available?
-              </h4>
-              <p className="text-gray-600 text-sm">
-                We offer a 7-day free trial for all plans so you can experience our GRE prep platform before committing.
-              </p>
-            </div>
-            <div className="bg-white border border-gray-200 rounded-xl p-5">
-              <h4 className="text-base font-semibold text-black mb-2">
-                What payment methods do you accept?
-              </h4>
-              <p className="text-gray-600 text-sm">
-                We accept all major credit cards, debit cards, UPI, and net banking for Indian customers.
-              </p>
-            </div>
           </div>
         </div>
       </div>
-    </div>
-    <Footer/>
+      <Footer/>
     </div>
   );
 };
 
-export default GRECoursesPage;
+export default GMATPricingPage;

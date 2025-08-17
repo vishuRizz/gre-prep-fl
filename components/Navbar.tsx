@@ -98,27 +98,27 @@ const getHoverTextColor = () => {
                   </svg>
                 </div>
                 <div className="flex items-center">
-                  <span className={`font-bold text-xl sm:text-xl transition-colors ${getTextColor()}`}>Gre</span>
-                  <span className={`font-normal text-lg sm:text-xl transition-colors ${getTextColor()}`}>TestPrep</span>
+                  <span className="font-bold text-xl sm:text-xl transition-colors text-white">Gre</span>
+                  <span className="font-normal text-lg sm:text-xl transition-colors text-white">TestPrep</span>
                   <span className="ml-2 bg-[#7AC86B] text-white text-xs px-1.5 py-0.5 sm:px-2 sm:py-1 rounded font-bold">GRE</span>
                 </div>
               </a>
-              <div className={`text-xs mt-0.5 ml-8 sm:ml-10 transition-colors hidden sm:block ${getTextColor()}`}>
+              <div className="text-xs mt-0.5 ml-8 sm:ml-10 transition-colors hidden sm:block text-white">
                 Prepare with the best. Rock the test.™
               </div>
             </div>
 
             {/* Desktop Navigation Links */}
             <div className="hidden xl:flex items-center space-x-8 lg:space-x-10">
-              <a href="/pricing" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
+              <a href="/pricing" className="text-sm lg:text-base font-medium transition-colors text-white hover:text-emerald-400">
                 PLANS
               </a>
-              <a href="/courses" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
+              <a href="/courses" className="text-sm lg:text-base font-medium transition-colors text-white hover:text-emerald-400">
                 COURSES
               </a>
               {/* Our Locations Dropdown */}
               <div className="relative group">
-                <button className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()} flex items-center`}>
+                <button className="text-sm lg:text-base font-medium transition-colors text-white hover:text-emerald-400 flex items-center">
                   OUR LOCATIONS
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -148,16 +148,16 @@ const getHoverTextColor = () => {
                 </div>
               </div>
               {isAdmin && (
-                <a href="/admin/users" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
+                <a href="/admin/users" className="text-sm lg:text-base font-medium transition-colors text-white hover:text-emerald-400">
                   USERS
                 </a>
               )}
               {isAdmin && (
-                <a href="/admin/add-course" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
+                <a href="/admin/add-course" className="text-sm lg:text-base font-medium transition-colors text-white hover:text-emerald-400">
                   ADD-COURSE
                 </a>
               )}
-              <a href="/testimonial" className={`text-sm lg:text-base font-medium transition-colors ${getTextColor()} ${getHoverTextColor()}`}>
+              <a href="/testimonial" className="text-sm lg:text-base font-medium transition-colors text-white hover:text-emerald-400">
                 TESTIMONIALS
               </a>
             </div>
@@ -243,7 +243,7 @@ const getHoverTextColor = () => {
             <div className="xl:hidden">
               <button 
                 onClick={toggleMobileMenu}
-                className={`p-2 transition-colors ${getTextColor()} ${getHoverTextColor()}`}
+                className="p-2 transition-colors text-white hover:text-emerald-400"
                 aria-label="Toggle mobile menu"
               >
                 {isMobileMenuOpen ? (
@@ -452,7 +452,7 @@ const getHoverTextColor = () => {
 
           {/* Mobile Menu Footer */}
           <div className="p-4 border-t border-white">
-            <p className="text-xs text-gray-400 text-center">
+            <p className="text-xs text-white text-center">
               Prepare with the best. Rock the test.™
             </p>
           </div>

@@ -189,7 +189,7 @@ const TestimonialsPage: React.FC = () => {
         }}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 tracking-wide">
+          <h1 className="text-2xl md:text-2xl font-semibold mb-4 tracking-wide">
             <span className="text-yellow-400">REFERENCES & TESTIMONIALS</span>
           </h1>
           <p className="text-xl md:text-2xl font-light">
