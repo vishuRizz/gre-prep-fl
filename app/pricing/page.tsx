@@ -247,6 +247,71 @@ const GMATPricingPage: React.FC = () => {
           </div>
         </div>
       </div>
+      <div className="relative min-h-[600px] bg-cover bg-center bg-no-repeat" style={{
+      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2071&q=80')`
+    }}>
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+          
+          {/* GMAT Private Tutor */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-normal text-[#7AC86B] mb-6">
+              GMAT Private Tutor
+            </h2>
+            <p className="text-white text-base md:text-lg leading-relaxed font-light">
+              Learning is so much easy and effective when you have personal 
+              attention and guidance from an excellent tutor with great passion 
+              and experience. Our highly qualified experts have helped many 
+              learners reach their target scores and target schools in a short span 
+              with our engaging & effective methods.
+            </p>
+          </div>
+
+          {/* Flexible Schedules */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-normal text-[#7AC86B] mb-6">
+              Flexible Schedules
+            </h2>
+            <p className="text-white text-base md:text-lg leading-relaxed font-light">
+              For busy working professionals, we understand how challenging it is 
+              to find time to prepare for GMAT test. We work closely around your 
+              available times and accommodate you accordingly (early morning 
+              6:00 AM or late night 11:00 PM). We are a perfect solution for your 
+              demanding schedules.
+            </p>
+          </div>
+
+          {/* Designed For Busy Schedules */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-normal text-[#7AC86B] mb-6">
+              Designed For Busy Schedules
+            </h2>
+            <p className="text-white text-base md:text-lg leading-relaxed font-light">
+              Our well researched and successful GMAT prep classes make sure 
+              you learn more in less time with our proven strategies. Wherever you 
+              go, your steady GMAT prep shouldn't stop and we will work closely 
+              to prepare a perfect action plan & strategy for you all through your 
+              test date.
+            </p>
+          </div>
+
+          {/* Value for Money */}
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-normal text-[#7AC86B] mb-6">
+              Value for Money
+            </h2>
+            <p className="text-white text-base md:text-lg leading-relaxed font-light">
+              Our passion to help students ace the GMAT test and having low 
+              overheads we provide our best possible services at affordable rates 
+              (which are 50% less than our competitors rates). Our students who 
+              enroll our GMAT online course are guided and provided with all the 
+              tools, strategies and action plan to excel in the GMAT test!
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
       <Footer/>
     </div>
   );
